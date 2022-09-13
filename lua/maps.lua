@@ -24,6 +24,15 @@ inoremap('<C-c>', '"*y')
 vnoremap('<C-c>', '"*y')
 xnoremap('<C-c>', '"*y')
 
+-- Do and undo
+inoremap('<C-Z>', '<C-O>u')
+inoremap('<C-Y>', '<C-O><C-R>')
+
+-- Move lines up and down
+nnoremap('<A-j>', ':m .+1<CR>==')
+nnoremap('<A-k>', ':m .-2<CR>==')
+vnoremap('<A-j>', ":m '>+1<CR>gv=gv")
+vnoremap('<A-k>', ":m '<-2<CR>gv=gv")
 
 
 

@@ -9,7 +9,7 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim' -- utitlities for vim config
-  
+
   -- Colormode and status line
 	use 'folke/tokyonight.nvim' -- color theme
 	use 'folke/zen-mode.nvim'
@@ -19,32 +19,38 @@ packer.startup(function(use)
 	use 'lewis6991/gitsigns.nvim' -- viewing git
 
 	-- LSP and ít utilities
-	use 'neovim/nvim-lspconfig' -- official LSP
+	use 'neovim/nvim-lspconfig' -- official LSP 
 	use 'onsails/lspkind-nvim' -- vscode-like pictograms
+  use 'L3MON4D3/LuaSnip'
 	use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp' -- Completion
+  use 'hrsh7th/nvim-cmp' -- Code Completion
 	use 'glepnir/lspsaga.nvim' -- LSP UIs
 	use 'williamboman/mason.nvim' -- LSP manager
   use 'williamboman/mason-lspconfig.nvim' -- mason config helpers
 	use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
-	use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
+
+  -- Comment and uncommentj
   use 'numToStr/Comment.nvim'
 
-	-- terminal and dir browser
+	-- Syntax highlighting
   use {
-    'nvim-treesitter/nvim-treesitter', -- tree browsing
-    run = ':TSUpdate'
+    'nvim-treesitter/nvim-treesitter',
+    run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
 	use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
 	use 'kyazdani42/nvim-web-devicons' -- File icons
+	use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
+  use 'norcalli/nvim-colorizer.lua'
+
+  -- Terminal and dir browser
   use 'nvim-telescope/telescope.nvim' -- telescope
   use 'nvim-telescope/telescope-file-browser.nvim' -- telescope helpers
-	use 'kyazdani42/nvim-tree.lua'
-  use 'akinsho/toggleterm.nvim'
+	use 'kyazdani42/nvim-tree.lua' -- tree browser
+  use 'akinsho/toggleterm.nvim' -- terminal toggler
 
 	-- HTML and JSX tag auto complete
 	use 'windwp/nvim-autopairs' -- auto pairs
