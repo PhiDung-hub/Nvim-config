@@ -9,7 +9,8 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim' -- utitlities for vim config
-  -- Your plugins go here
+  
+  -- Colormode and status line
 	use 'folke/tokyonight.nvim' -- color theme
 	use 'folke/zen-mode.nvim'
 	use 'nvim-lualine/lualine.nvim' -- Statusline
@@ -28,6 +29,7 @@ packer.startup(function(use)
   use 'williamboman/mason-lspconfig.nvim' -- mason config helpers
 	use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
 	use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client
+  use 'numToStr/Comment.nvim'
 
 	-- terminal and dir browser
   use {
@@ -42,6 +44,7 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim' -- telescope
   use 'nvim-telescope/telescope-file-browser.nvim' -- telescope helpers
 	use 'kyazdani42/nvim-tree.lua'
+  use 'akinsho/toggleterm.nvim'
 
 	-- HTML and JSX tag auto complete
 	use 'windwp/nvim-autopairs' -- auto pairs
