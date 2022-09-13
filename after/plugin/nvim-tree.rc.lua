@@ -13,27 +13,19 @@ local icons = require "icons"
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
-
-  hijack_directories = {
-    enable = false,
-  },
-  -- disable_netrw = false,
-	-- hijack_netrw = true,
-  open_on_setup = true,
-  filters = {
-    custom = { ".git" },
-    exclude = { ".gitignore" },
-  },
-  open_on_tab = false,
+  actions = {
+		change_dir = {
+			enable = false,
+		},
+		open_file = {
+			quit_on_open = false,
+		},
+	},
   hijack_cursor = true,
   update_cwd = true,
-
   renderer = {
-    add_trailing = false,
-    group_empty = false,
-    highlight_git = false,
-    highlight_opened_files = "none",
-    root_folder_modifier = ":t",
+    highlight_git = true,
+    highlight_opened_files = "all",
     indent_markers = {
       enable = false,
       icons = {
@@ -88,7 +80,6 @@ nvim_tree.setup {
   update_focused_file = {
     enable = true,
     update_cwd = true,
-    ignore_list = {},
   },
   git = {
     enable = true,
@@ -96,11 +87,7 @@ nvim_tree.setup {
     timeout = 500,
   },
   view = {
-    width = 25,
-    height = 30,
-    hide_root_folder = false,
-    side = "left",
-    -- auto_resize = true,
+    adaptive_size = true,
     mappings = {
       custom_only = false,
       list = {
@@ -108,7 +95,7 @@ nvim_tree.setup {
         { key = "v", cb = tree_cb "vsplit" },
       },
     },
-    number = false,
+    number = true,
     relativenumber = false,
   },
 }
