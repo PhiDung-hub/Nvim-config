@@ -22,7 +22,7 @@ packer.startup(function(use)
   use 'phaazon/hop.nvim'
 
   -- LSP and ít utilities
-  use 'neovo m/nvim-lspconfig' -- official LSP
+  use 'neovim/nvim-lspconfig' -- official LSP
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'hrsh7th/nvim-cmp' -- Code Completion
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffers (tab)
@@ -37,8 +37,9 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim' -- LSP manager
   use 'williamboman/mason-lspconfig.nvim' -- mason config helpers
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
+  use "b0o/schemastore.nvim"
 
-  -- Comment and uncommentj
+  -- Comment and uncomment
   use 'numToStr/Comment.nvim'
   use 'folke/todo-comments.nvim'
 

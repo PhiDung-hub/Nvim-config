@@ -23,6 +23,7 @@ nvim_tree.setup {
 	},
   hijack_cursor = true,
   update_cwd = true,
+  create_in_closed_folder=true,
   renderer = {
     highlight_git = true,
     highlight_opened_files = "all",
@@ -45,27 +46,6 @@ nvim_tree.setup {
         folder_arrow = true,
         git = true,
       },
-      glyphs = {
-        default = "",
-        symlink = "",
-        folder = {
-          default = "",
-          open = "",
-          empty = "",
-          empty_open = "",
-          symlink = "",
-          symlink_open = "",
-        },
-        git = {
-          unstaged = "",
-          staged = "S",
-          unmerged = "",
-          renamed = "➜",
-          untracked = "U",
-          deleted = "",
-          ignored = "◌",
-        },
-      },
     },
   },
   diagnostics = {
@@ -81,13 +61,9 @@ nvim_tree.setup {
     enable = true,
     update_cwd = true,
   },
-  git = {
-    enable = true,
-    ignore = true,
-    timeout = 500,
-  },
   view = {
     adaptive_size = true,
+    side="left",
     mappings = {
       custom_only = false,
       list = {
