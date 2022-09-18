@@ -60,6 +60,7 @@ packer.startup(function(use)
   -- Terminal and dir browser
   use 'nvim-telescope/telescope.nvim' -- telescope
   use 'nvim-telescope/telescope-file-browser.nvim' -- telescope helpers
+  use 'nvim-telescope/telescope-media-files.nvim' -- preview image
   use 'kyazdani42/nvim-tree.lua' -- tree browser
   use 'akinsho/toggleterm.nvim' -- terminal toggler
   use 'akinsho/nvim-bufferline.lua' -- buffer navigation on top

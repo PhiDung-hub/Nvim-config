@@ -32,7 +32,6 @@ ts.setup {
     "prisma",
     "python",
     "toml",
-    "fish",
     "php",
     "json",
     "yaml",

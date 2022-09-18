@@ -1,29 +1,42 @@
-local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-if not null_ls_status_ok then
-  return
-end
+local status, null_ls = pcall(require, "null-ls")
+if (not status) then return end
+
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
+-- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/completion
+local completion = null_ls.builtins.completion
 
--- https://github.com/prettier-solidity/prettier-plugin-solidity
--- npm install --save-dev prettier prettier-plugin-solidity
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
-    formatting.prettier.with {
-      extra_filetypes = { "toml", "solidity" },
-    },
-    formatting.black.with { extra_args = { "--fast" } },
-    formatting.stylua,
-    formatting.shfmt,
-    formatting.google_java_format,
-    -- diagnostics.flake8,
+    diagnostics.eslint_d.with({
+      diagnostics_format = '[eslint] #{m} (#{c})'
+    }),
     diagnostics.shellcheck,
+    completion.luasnip,
+    completion.spell,
+    formatting.shfmt,
+    formatting.stylua,
   },
-}
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
+          vim.lsp.buf.formatting_sync()
+        end,
+      })
+    end
+  end,
+})
+
 
 local unwrap = {
   method = null_ls.methods.DIAGNOSTICS,
@@ -43,7 +56,7 @@ local unwrap = {
             col = col,
             end_col = end_col,
             source = "unwrap",
-            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this",
+            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this" ,
             severity = 2,
           })
         end

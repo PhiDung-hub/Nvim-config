@@ -14,19 +14,17 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup {
   actions = {
-		change_dir = {
-			enable = false,
-		},
-		open_file = {
-			quit_on_open = false,
-		},
-	},
+    change_dir = {
+      enable = false,
+    },
+    open_file = {
+      quit_on_open = false,
+    },
+  },
   hijack_cursor = true,
   update_cwd = true,
-  create_in_closed_folder=true,
   renderer = {
     highlight_git = true,
-    highlight_opened_files = "all",
     indent_markers = {
       enable = false,
       icons = {
@@ -50,19 +48,18 @@ nvim_tree.setup {
   },
   diagnostics = {
     enable = true,
-		icons = {
-			hint = icons.diagnostics.Hint,
+    icons = {
+      hint = icons.diagnostics.Hint,
       info = icons.diagnostics.Information,
       warning = icons.diagnostics.Warning,
       error = icons.diagnostics.Error,
-		},
+    },
   },
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
   view = {
-    adaptive_size = true,
     side="left",
     mappings = {
       custom_only = false,
