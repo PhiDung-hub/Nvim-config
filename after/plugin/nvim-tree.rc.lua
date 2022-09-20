@@ -21,8 +21,10 @@ nvim_tree.setup {
       quit_on_open = false,
     },
   },
+
   hijack_cursor = true,
   update_cwd = true,
+
   renderer = {
     highlight_git = true,
     indent_markers = {
@@ -46,6 +48,7 @@ nvim_tree.setup {
       },
     },
   },
+
   diagnostics = {
     enable = true,
     icons = {
@@ -55,10 +58,12 @@ nvim_tree.setup {
       error = icons.diagnostics.Error,
     },
   },
+  
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
+
   view = {
     side="left",
     mappings = {

@@ -259,6 +259,11 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
+  },
   ["zen-mode.nvim"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/zen-mode.nvim",

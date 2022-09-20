@@ -3,10 +3,13 @@ if (not status) then return end
 
 saga.init_lsp_saga {}
 
-local options = { noremap = true }
-vim.keymap.set('n', '<C-j>', '<Cmd>Lspsaga diagnostic_jump_next<CR>', options)
-vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<CR>', options)
-vim.keymap.set('n', 'gd', '<Cmd>Lspsaga lsp_finder<CR>', options)
-vim.keymap.set('i', '<C-k>', '<Cmd>Lspsaga signature_help<CR>', options)
-vim.keymap.set('n', 'gp', '<Cmd>Lspsaga peek_definition<CR>', options)
-vim.keymap.set('n', 'gr', '<Cmd>Lspsaga rename<CR>', options)
+local nnoremap = require("helpers.keymap").nnoremap
+local inoremap = require("helpers.keymap").inoremap
+
+-- See Lspsaga plugin.
+nnoremap('<c-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
+nnoremap('K', '<cmd>Lspsaga hover_doc<cr>')
+nnoremap('gd', '<cmd>Lspsaga lsp_finder<cr>')
+inoremap('<c-k>', '<cmd>Lspsaga signature_help<cr>')
+nnoremap('gp', '<cmd>Lspsaga peek_definition<cr>')
+nnoremap('gr', '<Cmd>Lspsaga rename<CR>')

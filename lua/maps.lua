@@ -1,7 +1,7 @@
-local nnoremap = require("keymap").nnoremap
-local inoremap = require("keymap").inoremap
-local vnoremap = require("keymap").vnoremap
-local xnoremap = require("keymap").xnoremap
+local nnoremap = require("helpers.keymap").nnoremap
+local inoremap = require("helpers.keymap").inoremap
+local vnoremap = require("helpers.keymap").vnoremap
+local xnoremap = require("helpers.keymap").xnoremap
 
 -- window and file management
 nnoremap('<C-a>', 'gg<S-v>G') -- select all
@@ -24,15 +24,17 @@ inoremap('<C-c>', '"*y')
 vnoremap('<C-c>', '"*y')
 xnoremap('<C-c>', '"*y')
 
--- Do and undo
+-- Do, undo.
 inoremap('<C-Z>', '<C-O>u')
 inoremap('<C-Y>', '<C-O><C-R>')
+
+-- press Ctrl-S to save
+inoremap('<C-S>', '<ESC>:up<CR>a')
+vnoremap('<C-S>', '<ESC>:up<CR>gv')
+nnoremap('<C-S>', ':up<CR>')
 
 -- Move lines up and down
 nnoremap('<A-j>', ':m .+1<CR>==')
 nnoremap('<A-k>', ':m .-2<CR>==')
 vnoremap('<A-j>', ":m '>+1<CR>gv=gv")
 vnoremap('<A-k>', ":m '<-2<CR>gv=gv")
-
-
-
