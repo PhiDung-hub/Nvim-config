@@ -13,37 +13,19 @@ local completion = null_ls.builtins.completion
 null_ls.setup({
   debug = false,
   sources = {
-    diagnostics.eslint_d.with({
-      diagnostics_format = '[eslint] #{m} (#{c})'
-    }),
-    diagnostics.shellcheck,
+    diagnostics.eslint_d,
     completion.luasnip,
     completion.spell,
     formatting.shfmt,
-    formatting.stylua,
   },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          -- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
-          vim.lsp.buf.formatting_sync()
-        end,
-      })
-    end
-  end,
 })
-
 
 local unwrap = {
   method = null_ls.methods.DIAGNOSTICS,
   filetypes = { "rust" },
   generator = {
     fn = function(params)
-      local diagnostics = {}
+      local diag = {}
       -- sources have access to a params object
       -- containing info about the current file and editor state
       for i, line in ipairs(params.content) do
@@ -51,17 +33,17 @@ local unwrap = {
         if col and end_col then
           -- null-ls fills in undefined positions
           -- and converts source diagnostics into the required format
-          table.insert(diagnostics, {
+          table.insert(diag, {
             row = i,
             col = col,
             end_col = end_col,
             source = "unwrap",
-            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this" ,
+            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this",
             severity = 2,
           })
         end
       end
-      return diagnostics
+      return diag
     end,
   },
 }

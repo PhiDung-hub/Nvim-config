@@ -8,14 +8,14 @@ if (not status) then return end
 -- vim.g.tokyonight_italic_functions = true
 
 tokyonight.setup {
-  style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+  style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   transparent = false, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
   styles = {
     -- Style to be applied to different syntax groups
     -- Value is any valid attr-list value for `:help nvim_set_hl`
     comments = { italic = false },
-    keywords = { italic = true },
+    keywords = { italic = false },
     functions = {},
     variables = {},
     -- Background styles. Can be "dark", "transparent" or "normal"

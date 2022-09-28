@@ -17,7 +17,6 @@ local servers = {
   "jsonls",
   "solc",
   "solang",
-  "sumneko_lua",
   "terraformls",
   "tsserver",
   "tailwindcss",

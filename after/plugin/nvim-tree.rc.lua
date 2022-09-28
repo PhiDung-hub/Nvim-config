@@ -22,7 +22,9 @@ nvim_tree.setup {
     },
   },
 
+  focus_empty_on_setup = true,
   hijack_cursor = true,
+  hijack_netrw = true,
   update_cwd = true,
 
   renderer = {
@@ -49,6 +51,12 @@ nvim_tree.setup {
     },
   },
 
+  git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  },
+
   diagnostics = {
     enable = true,
     icons = {
@@ -56,16 +64,21 @@ nvim_tree.setup {
       info = icons.diagnostics.Information,
       warning = icons.diagnostics.Warning,
       error = icons.diagnostics.Error,
-    },
   },
-  
+  },
+
   update_focused_file = {
     enable = true,
     update_cwd = true,
   },
 
+
+  filters = {
+    custom = { "^.git$", '^.sqlite$', 'cache/' },
+  },
+
   view = {
-    side="left",
+    side = "left",
     mappings = {
       custom_only = false,
       list = {
