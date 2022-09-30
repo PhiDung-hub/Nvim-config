@@ -10,7 +10,6 @@ vim.api.nvim_set_keymap('t', "<leader><Esc>", [[<C-\><C-n>]], {noremap=true})
 nnoremap('<C-a>', 'gg<S-v>G') -- select all
 -- nnoremap("<leader>t", "<cmd>NvimTreeToggle<CR>") -- toggle nvim-tree
 nnoremap("<leader>t", "<cmd>NeoTreeFocusToggle<CR>") -- toggle nvim-tree
-nnoremap("<leader>r", "<cmd>NvimTreeRefresh<CR>") -- refresh nvim-tree
 nnoremap("<F3>", "gg=G<C-o>") -- reformat entire file with F3
 
 -- Split window
