@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["code_runner.nvim"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/code_runner.nvim",
+    url = "https://github.com/CRAG666/code_runner.nvim"
+  },
   ["formatter.nvim"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/formatter.nvim",
@@ -204,6 +209,11 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
   },
+  ["nvim-ts-rainbow"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-ts-rainbow",
+    url = "https://github.com/p00f/nvim-ts-rainbow"
+  },
   ["nvim-web-devicons"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
@@ -223,11 +233,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
-  },
-  ["schemastore.nvim"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
-    url = "https://github.com/b0o/schemastore.nvim"
   },
   ["telescope-file-browser.nvim"] = {
     loaded = true,
@@ -258,6 +263,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
   },
   ["which-key.nvim"] = {
     loaded = true,

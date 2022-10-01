@@ -1,7 +1,7 @@
 local status, comment = pcall(require, "Comment")
 if (not status) then
   print("Comment.nvim not found")
-  return 
+  return
 end
 
 require'nvim-treesitter.configs'.setup {

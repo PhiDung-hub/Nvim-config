@@ -7,16 +7,9 @@ local protocol = require('vim.lsp.protocol')
 
 local util = require 'vim.lsp.util'
 
-local formatting_callback = function(client, bufnr)
-  vim.keymap.set('n', '<leader>f', function()
-    local params = util.make_formatting_params({})
-    client.request('textDocument/formatting', params, nil, bufnr)
-  end, {buffer = bufnr})
-end
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -26,6 +19,11 @@ local on_attach = function(_, bufnr)
 
   -- Mappings.
   local opts = { noremap = true, silent = true }
+
+  vim.keymap.set('n', '<leader>f', function()
+    local params = util.make_formatting_params({})
+    client.request('textDocument/formatting', params, nil, bufnr)
+  end, { buffer = bufnr })
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -79,9 +77,13 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
-nvim_lsp.sourcekit.setup {
+nvim_lsp.rust_analyzer.setup {
   on_attach = on_attach,
 }
+
+-- nvim_lsp.clangd.setup {
+--   on_attach = on_attach,
+-- }
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
@@ -105,11 +107,11 @@ nvim_lsp.tailwindcss.setup {}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-    underline = true,
-    update_in_insert = false,
-    virtual_text = { spacing = 4, prefix = "●" },
-    severity_sort = true,
-  }
+  underline = true,
+  update_in_insert = false,
+  virtual_text = { spacing = 4, prefix = "●" },
+  severity_sort = true,
+}
 )
 
 -- Diagnostic symbols in the sign column (gutter)

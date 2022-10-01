@@ -17,7 +17,6 @@ ts.setup {
     "tsx",
     "vim",
     "solidity",
-    "sql",
     "rust",
     "json",
     "jsdoc",
@@ -27,25 +26,28 @@ ts.setup {
     "c",
     "cpp",
     "dockerfile",
-    "c_sharp",
     "bash",
     "prisma",
     "python",
     "toml",
-    "php",
     "json",
     "yaml",
-    "swift",
     "css",
     "scss",
     "html",
     "lua",
     "vue",
-    "svelte",
   },
   autotag = {
     enable = true,
   },
+  -- nvim-ts-rainbow plugin: https://github.com/p00f/nvim-ts-rainbow
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_line = nil,
+    disable = {}, -- list of languages you want to disable the plugin for
+  }
 }
 
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()

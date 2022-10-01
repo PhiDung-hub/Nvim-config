@@ -26,7 +26,7 @@ local servers = {
   "clangd",
   "rust_analyzer",
   "taplo",
-  "lemminx"
+  "lemminx",
 }
 
 mason.setup({})

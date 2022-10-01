@@ -90,3 +90,6 @@ nvim_tree.setup {
     relativenumber = false,
   },
 }
+
+local nnoremap = require("helpers.keymap").nnoremap
+nnoremap("<leader>t", "<cmd>NvimTreeToggle<CR>") -- toggle nvim-treekj

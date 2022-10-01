@@ -1,6 +1,5 @@
 local status, neotree = pcall(require, "neo-tree")
-if not status
-then
+if not status then
   print("neo-tree not found")
   return
 end
@@ -72,8 +71,8 @@ neotree.setup {
     git_status = {
       symbols = {
         -- Change type
-        added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
-        modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
+        -- added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
+        -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
         deleted   = "✖",-- this can only be used in the git_status source
         renamed   = "",-- this can only be used in the git_status source
         -- Status type
@@ -109,13 +108,11 @@ neotree.setup {
       -- ["<cr>"] = "open_drop",
       -- ["t"] = "open_tab_drop",
       ["w"] = "open_with_window_picker",
-      --["P"] = "toggle_preview", -- enter preview mode, which shows the current node without focusing
       ["C"] = "close_node",
-      ["z"] = "close_all_nodes",
-      --["Z"] = "expand_all_nodes",
+      ["<leader>z"] = "close_all_nodes",
+      ["<leader>Z"] = "expand_all_nodes",
       ["a"] = {
         "add",
-        -- some commands may take optional config options, see `:h neo-tree-mappings` for details
         config = {
           show_path = "none" -- "none", "relative", "absolute"
         }
@@ -144,7 +141,7 @@ neotree.setup {
   nesting_rules = {},
   filesystem = {
     filtered_items = {
-      visible = true, -- when true, they will just be displayed differently than normal items
+      visible = false, -- when true, they will just be displayed differently than normal items
       hide_dotfiles = false,
       hide_gitignored = true,
       hide_hidden = true, -- only works on Windows for hidden files/directories
@@ -157,7 +154,7 @@ neotree.setup {
         --"*/src/*/tsconfig.json",
       },
       always_show = { -- remains visible even if other settings would normally hide it
-        --".gitignored",
+        ".gitignore",
       },
       never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
         --".DS_Store",
@@ -219,3 +216,7 @@ neotree.setup {
     }
   }
 }
+
+local nnoremap = require("helpers.keymap").nnoremap
+nnoremap('<leader>t', '<Cmd>NeoTreeFocusToggle<CR>')
+
