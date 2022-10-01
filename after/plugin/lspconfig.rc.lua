@@ -81,9 +81,28 @@ nvim_lsp.rust_analyzer.setup {
   on_attach = on_attach,
 }
 
--- nvim_lsp.clangd.setup {
---   on_attach = on_attach,
--- }
+local clangd_cap = capabilities
+clangd_cap.textDocument.semanticHighlighting = true
+clangd_cap.offsetEncoding = "utf-16"
+nvim_lsp.clangd.setup {
+  on_attach = on_attach,
+  capabilities = clangd_cap,
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--pch-storage=memory",
+    "--clang-tidy",
+    "--suggest-missing-includes",
+    "--cross-file-rename",
+    "--completion-style=detailed",
+  },
+  init_options = {
+    clangdFileStatus = true,
+    usePlaceholders = true,
+    completeUnimported = true,
+    semanticHighlighting = true,
+  }
+}
 
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,

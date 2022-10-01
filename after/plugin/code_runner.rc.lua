@@ -15,11 +15,11 @@ code_runner.setup {
     cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && $dir/$fileNameWithoutExt"
   },
   -- choose default mode (valid term, tab, float, toggle, buf)
-  mode = 'tab',
+  mode = 'float',
   -- Focus on runner window(only works on toggle, term and tab mode)
   focus = true,
   -- startinsert (see ':h inserting-ex')
-  startinsert = false,
+  startinsert = true,
   term = {
     --  Position to open the terminal, this option is ignored if mode is tab
     position = "bot",
@@ -28,7 +28,7 @@ code_runner.setup {
   },
   float = {
     -- Window border (see ':h nvim_open_win')
-    border = "none",
+    border = "rounded",
 
     -- Num from `0 - 1` for measurements
     height = 0.8,
@@ -41,7 +41,7 @@ code_runner.setup {
     float_hl = "Normal",
 
     -- Transparency (see ':h winblend')
-    blend = 0,
+    blend = 20,
   },
   filetype_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/code_runner.nvim/lua/code_runner/code_runner.json",
   project_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/code_runner.nvim/lua/code_runner/project_manager.json",
