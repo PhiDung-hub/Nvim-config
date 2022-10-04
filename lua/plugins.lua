@@ -12,9 +12,9 @@ packer.startup(function(use)
 
   -- Colormode and status line
   use 'folke/tokyonight.nvim' -- color theme
-  use 'folke/zen-mode.nvim'
+  use 'folke/zen-mode.nvim' -- zen
   use 'nvim-lualine/lualine.nvim' -- Statusline
-
+  use 'nvim-colortils/colortils.nvim' -- color utils
   -- git utils
   use 'lewis6991/gitsigns.nvim' -- viewing git
 
@@ -29,12 +29,16 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffers (tab)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP.
   use 'ray-x/lsp_signature.nvim' -- signature suggestion for lsp.
-  use 'L3MON4D3/LuaSnip'
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'williamboman/mason.nvim' -- LSP manager.
   use 'williamboman/mason-lspconfig.nvim' -- mason config helpers.
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua.
   use 'folke/trouble.nvim' -- diagnostics
+
+  -- Snippets engine
+  use 'L3MON4D3/LuaSnip' -- https://github.com/L3MON4D3/LuaSnip
+  use 'saadparwaiz1/cmp_luasnip' -- Use LuaSnip with nvim-cmp https://github.com/saadparwaiz1/cmp_luasnip
+  use 'rafamadriz/friendly-snippets' -- snippets collection
 
   -- Comment and uncomment
   use 'numToStr/Comment.nvim'
@@ -63,15 +67,23 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim' -- telescope helpers
   use 'nvim-telescope/telescope-media-files.nvim' -- preview image
   -- use 'kyazdani42/nvim-tree.lua' -- tree browser, switched to neo-tree
-  use "nvim-neo-tree/neo-tree.nvim" -- superior tree?
+  use {"nvim-neo-tree/neo-tree.nvim",   branch = "v2.x",} -- superior tree?
 
   -- Terminal & utilities
   use 'akinsho/toggleterm.nvim' -- terminal toggler
   use 'akinsho/nvim-bufferline.lua' -- buffer navigation on top
   use 'famiu/bufdelete.nvim' -- buffer deletetion (default is annoying)
+  use 'dstein64/nvim-scrollview' -- scrollview helper
 
   -- Code Runners
   use { 'CRAG666/code_runner.nvim', require = 'nvim-lua/plenary.nvim' }
+
+  -- Debugger
+  use 'mfussenegger/nvim-dap'
+  use 'rcarriga/nvim-dap-ui'
+  use 'jbyuki/one-small-step-for-vimkind'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'mfussenegger/nvim-dap-python'
 
   -- Session manager
   use 'rmagatti/auto-session'

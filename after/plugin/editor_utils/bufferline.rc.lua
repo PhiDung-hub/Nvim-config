@@ -21,7 +21,7 @@ bufferline.setup {
     max_name_length = 30,
     max_prefix_length = 30, -- prefix used when a buffer is de-duplicated.
     tab_size = 21,
-    diagnostics = "nvim_lsp", -- | "nvim_lsp" | "coc",
+    diagnostics = false, -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
     offsets = { { filetype = "NvimTree", text = "File Explorer", text_align="center", padding=1, separator = false } },
     show_buffer_icons = true,
@@ -51,12 +51,12 @@ bufferline.setup {
     },
     buffer_selected = {
       fg = '#fdf6e3',
-      bold = false,
+      bold = true,
       italic = false,
     },
-    fill = {
-      bg = '#073642'
-    }
+    -- fill = {
+    --   bg = '#073642'
+    -- }
   },
 }
 
@@ -70,6 +70,10 @@ nnoremap('<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>')
 nnoremap('<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>')
 nnoremap('<leader>4', '<Cmd>BufferLineGoToBuffer 4<CR>')
 nnoremap('<leader>5', '<Cmd>BufferLineGoToBuffer 5<CR>')
+nnoremap('<leader>6', '<Cmd>BufferLineGoToBuffer 6<CR>')
+nnoremap('<leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>')
+nnoremap('<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
+nnoremap('<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 nnoremap('<leader>0', '<Cmd>BufferLineGoToBuffer -1<CR>')
 
 

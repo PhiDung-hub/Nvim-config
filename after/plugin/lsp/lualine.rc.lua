@@ -24,6 +24,7 @@ lualine.setup {
       'filetype'
     },
     lualine_y = { 'progress' },
+    -- lualine_y = {{require('auto-session-library').current_session_name}},
     lualine_z = { 'location' }
   },
   inactive_sections = {
