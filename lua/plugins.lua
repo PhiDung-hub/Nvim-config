@@ -12,6 +12,7 @@ packer.startup(function(use)
 
   -- Colormode and status line
   use 'folke/tokyonight.nvim' -- color theme
+  use 'catppuccin/nvim' -- color scheme
   use 'folke/zen-mode.nvim' -- zen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-colortils/colortils.nvim' -- color utils

@@ -218,5 +218,5 @@ neotree.setup {
 }
 
 local nnoremap = require("helpers.keymap").nnoremap
-nnoremap('<leader>t', '<Cmd>NeoTreeFocusToggle<CR>')
+nnoremap('<M-t>', '<Cmd>NeoTreeFocusToggle<CR>')
 

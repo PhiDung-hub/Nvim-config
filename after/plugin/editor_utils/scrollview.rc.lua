@@ -6,5 +6,5 @@ scrollview.setup {
   current_only = true,
   winblend = 50,
   base = 'buffer',
-  column = 140
+  column = 150,
 }

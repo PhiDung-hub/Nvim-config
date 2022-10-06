@@ -20,7 +20,7 @@ tokyonight.setup {
     variables = {},
     -- Background styles. Can be "dark", "transparent" or "normal"
     sidebars = "dark", -- style for sidebars, see below
-    floats = "storm", -- style for floating windows
+    floats = "night", -- style for floating windows
   },
   sidebars = { "terminal", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
   day_brightness = 0.2, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
@@ -40,4 +40,4 @@ tokyonight.setup {
   on_highlights = function(highlights, colors) end,
 }
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme tokyonight-night]]

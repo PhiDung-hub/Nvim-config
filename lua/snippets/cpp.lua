@@ -62,12 +62,16 @@ ls.add_snippets("cpp", {
     t("for ("), i(1, "size_t"), t(" "), i(2, "i"), t("="), i(3, "0"), t("; "), f(tI, { 2 }), t("<"), i(4, "n"), t("; "),
     f(tI, { 2 }), t({ "++) {", "\t" }), i(0), t({ "", "}" }),
   }),
-  s({ trig = "fora", keyword = "for loop", dcsr = "Code snippet for 'for' loop" }, {
-    t("for (auto "), i(1, "x"), t(" : "), i(2, "container"), t({ ") {", "\t" }), i(0), t({ "", "}" }),
-  }),
   s({ trig = "forr", keyword = "reverse for loop", dcsr = "Code snippet for reverse 'for' loop" }, {
     t("for ("), i(1, "size_t"), t(" "), i(2, "i"), t("="), i(3, "n"), t("; "), f(tI, { 2 }), t(">="), i(4, "0"), t("; "),
     f(tI, { 2 }), t({ "--) {", "\t" }), i(0), t({ "", "}" }),
+  }),
+  s({ trig = "fora", keyword = "for loop", dcsr = "Code snippet for auto 'for' loop" }, {
+    t("for (auto "), i(1, "x"), t(" : "), i(2, "container"), t({ ") {", "\t" }), i(0), t({ "", "}" }),
+  }),
+  s({ trig = "forit", keyword = "iterator for loop", dcsr = "Code snippet for iterator 'for' loop" }, {
+    t("for (auto& "), i(1, "it"), t("="), i(2, "container"), t(".begin(); "), f(tI, { 1 }), t("!="),
+    f(tI, { 2 }), t(".end(); "), f(tI, { 1 }), t({ "++) {", "\t" }), i(0), t({ "", "}" }),
   }),
   s({ trig = "while", keyword = "while loop", dcsr = "Code snippet for 'while' loop" }, {
     t("while ("), i(1), t({ ") {", "\t" }), i(0), t({ "", "}" }),
@@ -84,6 +88,12 @@ ls.add_snippets("cpp", {
   s({ trig = "vecn", regTrig = true, name = "vectorn", dcsr = "Vector of size n" }, {
     t("std::vector<"), i(1, "int"), t("> "),
     i(2, "vec"), t("("), i(3, "n"), t(", "), i(3, "0"), t({ ");" }), i(0),
+  }),
+  s({ trig = "vi", regTrig = true, name = "vector", dcsr = "Basic vector" }, {
+    t("std::vector<"), i(1, "int"), t("> "), i(0),
+  }),
+  s({ trig = "vii", regTrig = true, name = "vector", dcsr = "Basic vector" }, {
+    t("std::vector<"), i(1, "std::pair<int, int>"), t("> "), i(0),
   }),
 
   -- List
@@ -129,8 +139,11 @@ ls.add_snippets("cpp", {
   }),
 
   -- map and set
-  s({ trig = "map", name = "generic map", dcsr = "Hash map" }, {
+  s({ trig = "mp", name = "generic map", dcsr = "Hash map" }, {
     t("std::unordered_map<"), i(1, "int"), t(", "), i(2, "int"), t("> "), i(3, "mp"), t(";"), i(0),
+  }),
+  s({ trig = "imp", name = "iterator for generic map", dcsr = "Hash map iterator" }, {
+    t("std::unordered_map<"), i(1, "int"), t(", "), i(2, "int"), t(">::iterator "), i(3, "imp"), t(";"), i(0),
   }),
   s({ trig = "mpii", name = "map int int", dcsr = "Hash map of int int" }, {
     t("std::unordered_map<int, int> "), i(1, "mp"), t(";"), i(0),
@@ -148,19 +161,19 @@ ls.add_snippets("cpp", {
 
   -- Pair
   s({ trig = "pii", name = "pair int int", dscr = "Basic pair" }, {
-    t("pair<int, int>")
+    t("std::pair<int, int>")
   }),
   s({ trig = "puu", name = "pair size_t size_t", dscr = "Basic pair" }, {
-    t("pair<size_t, size_t>")
+    t("std::pair<size_t, size_t>")
   }),
   s({ trig = "pis", name = "pair int strig", dscr = "Basic pair" }, {
-    t("pair<int, string>")
+    t("std::pair<int, string>")
   }),
   s({ trig = "psi", name = "pair string int", dscr = "Basic pair" }, {
-    t("pair<string, int>")
+    t("std::pair<string, int>")
   }),
   s({ trig = "pss", name = "pair string string", dscr = "Basic pair" }, {
-    t("pair<string, string>")
+    t("std::pair<string, string>")
   }),
 
   -- sort container
@@ -173,9 +186,19 @@ ls.add_snippets("cpp", {
     i(1, "vec"), t(".begin(), "), f(tI, { 1 }), t({ ".end(), cmp);", "" }), i(0),
   }),
 
+  -- string utils
+  s({ trig = "ss", name = "stringstream" }, {
+    t("const string& str=\""), i(1),
+    t({ "\";", "std::stringstream ss(str);" }), i(0),
+  }),
   s({ trig = "str_splitter", regTrig = true, name = "string splitter", dscr = "Split string into words with delimeters" }
     , {
     t({ "std::vector<string> splitStr(const string& target_string, const char delimeter=' ') { std::vector<string> words;size_t string_len = target_string.length();size_t start_word=0;size_t word_size=0;for (size_t i = 0; i < string_len; i++) {if(target_string[i] == delimeter) {word_size = i-start_word;words.push_back(target_string.substr(start_word, word_size));start_word = i+1;}}int last_word_size = string_len-start_word;string last_word = target_string.substr(start_word, last_word_size);words.push_back(last_word); return words;}" })
+  }),
+  s({ trig = "get_word", regTrig = true, name = "get word in a line",
+    dscr = "Split string into words with delimeters using ss" }
+    , {
+    t({ "  const string &str = \"This,is,a,word,string\"; std::stringstream ss(str); string word; while (getline(ss, word, ',')) { std::cout << word << \" - \"; }" })
   }),
 
   -- Tree
@@ -257,7 +280,6 @@ ls.add_snippets("cpp", {
     }),
   }),
 
-
   -- String function
   s({ trig = "in2post", regTrig = true, name = "infix to postfix",
     dscr = "Convert an infix expression to postfix expression" }, {
@@ -268,5 +290,15 @@ ls.add_snippets("cpp", {
     t("rabin karp"),
   }),
 
+  -- quick sort.
+  s({ trig = "partition" }, {
+    t("int partition(std::vector<int>& v, int l, int r) { int p{l}, $pivot = v[l]; for (int i=l+1; i<=r; i++) { if(v[i] < $pivot) { std::swap(v[p+1], v[i]); p++; }   } std::swap(v[l], v[p]); return p; }")
+  }),
+  s({ trig = "partition3" }, {
+    t("pair<int, int> partition3(std::vector<int> &v, int l, int r) { int p{l}, $pivot = v[l]; int start=l+1, end=r; while(start<=end) { if (v[start] < $pivot) { std::swap(v[p+1], v[start]); p++; } else if (v[start] > $pivot) { std::swap(v[start--], v[end--]); } start++; } std::swap(v[l], v[p]); pair<int, int> partition{p, end}; return partition; }")
+  }),
+  s({ trig = "qsort"}, {
+    t("void quickSort(std::vector<int> &v, int l, int r) { if(l >= r) return; int k = l + std::rand() % (r-l+1); std::swap(v[l], v[k]); int p = partition(v, l, r); quickSort(v, l, p-1); quickSort(v, p+1, r); }"),
+  }),
 
 })
