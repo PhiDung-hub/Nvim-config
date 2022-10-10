@@ -4,7 +4,7 @@ if (not status) then return end
 saga.init_lsp_saga {
   -- Options with default value
   -- "single" | "double" | "rounded" | "bold" | "plus"
-  border_style = "single",
+  border_style = "rounded",
   --the range of 0 for fully opaque window (disabled) to 100 for fully
   --transparent background. Values between 0-30 are typically most useful.
   saga_winblend = 0,
@@ -22,7 +22,7 @@ saga.init_lsp_saga {
   -- use emoji lightbulb in default
   code_action_icon = "💡",
   -- if true can press number to execute the codeaction in codeaction window
-  code_action_num_shortcut = true,
+  code_action_num_shortcut = false,
   -- same as nvim-lightbulb but async
   code_action_lightbulb = {
     enable = true,

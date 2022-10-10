@@ -104,6 +104,10 @@ nvim_lsp.clangd.setup {
   }
 }
 
+nvim_lsp.pyright.setup {
+
+}
+
 nvim_lsp.sumneko_lua.setup {
   on_attach = on_attach,
   settings = {
@@ -144,7 +148,7 @@ vim.diagnostic.config({
   virtual_text = {
     prefix = '●'
   },
-  update_in_insert = true,
+  update_in_insert = false,
   float = {
     source = "always", -- Or "if_many"
   },
