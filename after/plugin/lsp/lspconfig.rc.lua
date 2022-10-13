@@ -58,11 +58,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(
   vim.lsp.protocol.make_client_capabilities()
 )
 
-nvim_lsp.flow.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
 nvim_lsp.tsserver.setup {
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
@@ -89,12 +84,6 @@ nvim_lsp.clangd.setup {
     "--cross-file-rename",
     "--completion-style=detailed",
   },
-  init_options = {
-    clangdFileStatus = true,
-    usePlaceholders = true,
-    completeUnimported = true,
-    semanticHighlighting = true,
-  }
 }
 
 nvim_lsp.pyright.setup {

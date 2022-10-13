@@ -22,12 +22,15 @@ vim.fn.sign_define("DiagnosticSignHint",
 -- in the form "LspDiagnosticsSignWarning"
 
 neotree.setup {
-  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
   sort_function = nil, -- use a custom function for sorting files and directories in the tree
+  source_selector = {
+    padding = { left = 2, right = 0 },
+  },
   default_component_configs = {
     container = {
       enable_character_fade = true
@@ -87,11 +90,20 @@ neotree.setup {
       noremap = true,
       nowait = true,
     },
-    mappings = {
-      ["<space>"] = {
-        "toggle_node",
-        nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+    popup = { -- settings that apply to float position only
+      size = {
+        height = "80%",
+        width = "80%",
       },
+      position = "50%", -- 50% means center it
+      -- you can also specify border here, if you want a different setting from
+      -- the global popup_border_style.
+    },
+    mappings = {
+      -- ["<space>"] = {
+      --   "toggle_node",
+      --   nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+      -- },
       ["<2-LeftMouse>"] = "open",
       ["<cr>"] = "open",
       ["<esc>"] = "revert_preview",
@@ -120,12 +132,6 @@ neotree.setup {
       ["x"] = "cut_to_clipboard",
       ["p"] = "paste_from_clipboard",
       ["c"] = "copy", -- takes text input for destination, also accepts the optional config.show_path option like "add":
-      -- ["c"] = {
-      --  "copy",
-      --  config = {
-      --    show_path = "none" -- "none", "relative", "absolute"
-      --  }
-      --}
       ["m"] = "move", -- takes text input for destination, also accepts the optional config.show_path option like "add".
       ["q"] = "close_window",
       ["R"] = "refresh",

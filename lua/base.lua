@@ -1,16 +1,16 @@
-vim.cmd [[set mouse=a]]
-vim.opt.hidden = true
-vim.cmd [[set report=2]]
+vim.cmd [[set mouse=a]] -- enable mouse support
+vim.opt.hidden = true -- hide abandoned buffer
+vim.cmd [[set report=3]] -- report numbers of lines changed if greater than number
 vim.g.mapleader = " "
 
 -- Encodings
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
-vim.opt.fileencoding = 'utf-8'
+vim.bo.fileencoding = 'utf-8'
 
 vim.wo.relativenumber = true
 vim.wo.number = true
-vim.wo.colorcolumn = "150"
+-- vim.wo.colorcolumn = "150"
 
 -- maintain undo history between sessions
 vim.cmd([[set undofile]])
@@ -37,5 +37,6 @@ vim.opt.hlsearch = true -- Enable search highlighting (Default = ON)
 
 -- Current line
 vim.opt.cursorline = true
-vim.opt.cursorlineopt = "number"
-vim.cmd [[hi CursorLineNR guifg=#fff ]]
+-- vim.cmd [[set cursorline]]
+vim.opt.cursorlineopt = "number,line"
+vim.cmd [[highlight CursorLineNR ctermfg=white guifg=white gui=bold ]]
