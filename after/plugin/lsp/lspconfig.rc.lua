@@ -1,9 +1,18 @@
---vim.lsp.set_log_level("debug")
-
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
-local protocol = require('vim.lsp.protocol')
+-- nvim_create_augroup({name}, {*opts}) nvim_create_augroup() Create or get an autocommand group autocmd-groups.
+local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
+local enable_format_on_save = function(_, bufnr)
+  vim.api.nvim_clear_autocmds({ group = augroup_format, buffer = bufnr })
+  vim.api.nvim_create_autocmd("BufWritePre", {
+    group = augroup_format,
+    buffer = bufnr,
+    callback = function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end,
+  })
+end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -25,6 +34,7 @@ local on_attach = function(client, bufnr)
   -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
+local protocol = require('vim.lsp.protocol')
 protocol.CompletionItemKind = {
   '', -- Text
   '', -- Method
@@ -55,7 +65,7 @@ protocol.CompletionItemKind = {
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  vim.lsp.protocol.make_client_capabilities()
+  protocol.make_client_capabilities()
 )
 
 nvim_lsp.tsserver.setup {
@@ -65,8 +75,19 @@ nvim_lsp.tsserver.setup {
   capabilities = capabilities
 }
 
+nvim_lsp.tailwindcss.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+nvim_lsp.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
 nvim_lsp.rust_analyzer.setup {
   on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 local clangd_cap = capabilities
@@ -87,11 +108,16 @@ nvim_lsp.clangd.setup {
 }
 
 nvim_lsp.pyright.setup {
-
+  capabilities = capabilities,
+  on_attach = on_attach,
 }
 
 nvim_lsp.sumneko_lua.setup {
-  on_attach = on_attach,
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
   settings = {
     Lua = {
       diagnostics = {
@@ -107,8 +133,6 @@ nvim_lsp.sumneko_lua.setup {
     },
   },
 }
-
-nvim_lsp.tailwindcss.setup {}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {

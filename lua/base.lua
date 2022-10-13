@@ -28,6 +28,7 @@ vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.wrap = false
 vim.opt.backspace = { 'start', 'eol', 'indent' }
+vim.opt.scrolloff = 15
 
 -- Search
 vim.opt.ignorecase = true -- case-insensitive search

@@ -11,11 +11,9 @@ end
 -- Available server: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
 local servers = {
   "cssls",
-  "cssmodules_ls",
   "emmet_ls",
   "html",
   "jsonls",
-  "solc",
   "solang",
   "terraformls",
   "tsserver",
@@ -25,7 +23,6 @@ local servers = {
   "bashls",
   "clangd",
   "rust_analyzer",
-  "lemminx",
 }
 
 mason.setup({})
@@ -33,4 +30,3 @@ mason_lspconfig.setup {
   ensure_installed = servers,
   automatic_installation = true,
 }
-
