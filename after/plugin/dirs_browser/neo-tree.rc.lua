@@ -92,7 +92,7 @@ neotree.setup {
     },
     popup = { -- settings that apply to float position only
       size = {
-        height = "80%",
+        height = "90%",
         width = "80%",
       },
       position = "50%", -- 50% means center it

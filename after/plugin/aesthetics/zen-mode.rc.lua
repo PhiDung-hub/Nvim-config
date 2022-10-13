@@ -45,4 +45,4 @@ zenMode.setup {
   end,
 }
 
-vim.keymap.set('n', '<C-w>o', '<cmd>ZenMode<cr>', { silent = true })
+vim.keymap.set('n', '<C-M-O>', '<cmd>ZenMode<cr>', { silent = true })

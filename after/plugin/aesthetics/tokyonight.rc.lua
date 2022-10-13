@@ -32,7 +32,8 @@ tokyonight.setup {
   --- function will be called with a ColorScheme table
   ---@param colors ColorScheme
   on_colors = function(colors)
-    -- colors.bg = "#24283b"
+    colors.bg = "#17171F"
+    colors.bg_dark = "#131317"
   end,
 
   --- You can override specific highlights to use other groups or a hex color
