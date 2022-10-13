@@ -4,13 +4,13 @@ if (not status) then
   return
 end
 
-require'nvim-treesitter.configs'.setup {
+require 'nvim-treesitter.configs'.setup {
   context_commentstring = {
     enable = true
   }
 }
 
-comment.setup({
+comment.setup {
   ---Add a space b/w comment and the line
   padding = true,
   ---Whether the cursor should stay at its position
@@ -47,12 +47,9 @@ comment.setup({
     basic = true,
     ---Extra mapping; `gco`, `gcO`, `gcA`
     extra = true,
-    ---Extended mapping; `g>` `g<` `g>[count]{motion}` `g<[count]{motion}`
-    extended = true,
   },
   ---Function to call before (un)comment
   pre_hook = nil,
   ---Function to call after (un)comment
   post_hook = nil,
-})
-
+}

@@ -12,7 +12,6 @@ packer.startup(function(use)
 
   -- Colormode and status line
   use 'folke/tokyonight.nvim' -- color theme
-  use 'catppuccin/nvim' -- color scheme
   use 'folke/zen-mode.nvim' -- zen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-colortils/colortils.nvim' -- color utils
@@ -51,8 +50,7 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
   }
   use 'kyazdani42/nvim-web-devicons' -- File icons.
-  use 'MunifTanjim/prettier.nvim' -- Prettier plugin for Neovim's built-in LSP client.
-  use 'norcalli/nvim-colorizer.lua' -- color hinting.
+  use 'https://github.com/NvChad/nvim-colorizer.lua' -- maintained colorizer
   use 'mhartington/formatter.nvim' -- code formatter.
   use 'MunifTanjim/nui.nvim' -- ui packageo for neo-tree
   use 'p00f/nvim-ts-rainbow' -- rainbow bracket

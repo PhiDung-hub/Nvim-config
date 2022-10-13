@@ -4,34 +4,30 @@ if not status then
   return
 end
 
--- Config source: https://github.com/nvim-neo-tree/neo-tree.nvim#longer-example-for-packer 
+-- Config source: https://github.com/nvim-neo-tree/neo-tree.nvim#longer-example-for-packer
+
+-- Unless you are still migrating, remove the deprecated commands from v1.x
+vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
 vim.fn.sign_define("DiagnosticSignError",
-  {text = " ", texthl = "DiagnosticSignError"})
+  { text = " ", texthl = "DiagnosticSignError" })
 vim.fn.sign_define("DiagnosticSignWarn",
-  {text = " ", texthl = "DiagnosticSignWarn"})
+  { text = " ", texthl = "DiagnosticSignWarn" })
 vim.fn.sign_define("DiagnosticSignInfo",
-  {text = " ", texthl = "DiagnosticSignInfo"})
+  { text = " ", texthl = "DiagnosticSignInfo" })
 vim.fn.sign_define("DiagnosticSignHint",
-  {text = "", texthl = "DiagnosticSignHint"})
+  { text = "", texthl = "DiagnosticSignHint" })
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
 
 neotree.setup {
-  close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
+  close_if_last_window = false, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
   enable_diagnostics = true,
   sort_case_insensitive = false, -- used when sorting files and directories in the tree
-  sort_function = nil , -- use a custom function for sorting files and directories in the tree 
-  -- sort_function = function (a,b)
-  --       if a.type == b.type then
-  --           return a.path > b.path
-  --       else
-  --           return a.type > b.type
-  --       end
-  --   end , -- this sorts files and directories descendantly
+  sort_function = nil, -- use a custom function for sorting files and directories in the tree
   default_component_configs = {
     container = {
       enable_character_fade = true
@@ -73,8 +69,8 @@ neotree.setup {
         -- Change type
         -- added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
         -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted   = "✖",-- this can only be used in the git_status source
-        renamed   = "",-- this can only be used in the git_status source
+        deleted   = "✖", -- this can only be used in the git_status source
+        renamed   = "", -- this can only be used in the git_status source
         -- Status type
         untracked = "",
         ignored   = "",
@@ -94,7 +90,7 @@ neotree.setup {
     mappings = {
       ["<space>"] = {
         "toggle_node",
-        nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use 
+        nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
       },
       ["<2-LeftMouse>"] = "open",
       ["<cr>"] = "open",
@@ -109,7 +105,7 @@ neotree.setup {
       -- ["t"] = "open_tab_drop",
       ["w"] = "open_with_window_picker",
       ["C"] = "close_node",
-      ["<leader>z"] = "close_all_nodes",
+      -- ["<leader>z"] = "close_all_nodes",
       ["<leader>Z"] = "expand_all_nodes",
       ["a"] = {
         "add",
@@ -219,4 +215,3 @@ neotree.setup {
 
 local nnoremap = require("helpers.keymap").nnoremap
 nnoremap('<M-t>', '<Cmd>NeoTreeFocusToggle<CR>')
-

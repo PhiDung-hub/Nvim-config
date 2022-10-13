@@ -23,7 +23,7 @@ bufferline.setup {
     tab_size = 21,
     diagnostics = false, -- | "nvim_lsp" | "coc",
     diagnostics_update_in_insert = false,
-    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align="center", padding=1, separator = false } },
+    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center", padding = 1, separator = false } },
     show_buffer_icons = true,
     show_buffer_close_icons = false,
     show_close_icon = false,
@@ -38,25 +38,25 @@ bufferline.setup {
     -- },
   },
   highlights = {
-    separator = {
-      fg = '#073642',
-      bg = '#002b36',
-    },
+    -- separator = {
+    --   fg = '#073642',
+    --   bg = '#002b36',
+    -- },
+    -- background = {
+    --   fg = '#657b83',
+    --   bg = '#002b36'
+    -- },
     separator_selected = {
       fg = '#073642',
-    },
-    background = {
-      fg = '#657b83',
-      bg = '#002b36'
     },
     buffer_selected = {
       fg = '#fdf6e3',
       bold = true,
       italic = false,
     },
-    -- fill = {
-    --   bg = '#073642'
-    -- }
+    fill = {
+      bg = '#073642'
+    }
   },
 }
 
@@ -75,5 +75,3 @@ nnoremap('<leader>7', '<Cmd>BufferLineGoToBuffer 7<CR>')
 nnoremap('<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
 nnoremap('<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 nnoremap('<leader>0', '<Cmd>BufferLineGoToBuffer -1<CR>')
-
-
