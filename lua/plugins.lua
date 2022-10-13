@@ -15,12 +15,15 @@ packer.startup(function(use)
   use 'folke/zen-mode.nvim' -- zen
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-colortils/colortils.nvim' -- color utils
+
   -- git utils
   use 'lewis6991/gitsigns.nvim' -- viewing git
 
   -- hopping around
   use 'phaazon/hop.nvim' -- vim move on stereoid (add more custom mapping).
   use "folke/which-key.nvim" -- manage your hotkey on steroid.
+  use 'stevearc/aerial.nvim' -- code overview
+  use 'dstein64/nvim-scrollview' -- scrollview helper
 
   -- LSP and ít utilities
   use 'neovim/nvim-lspconfig' -- official LSP.
@@ -66,13 +69,12 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim' -- telescope helpers
   use 'nvim-telescope/telescope-media-files.nvim' -- preview image
   -- use 'kyazdani42/nvim-tree.lua' -- tree browser, switched to neo-tree
-  use {"nvim-neo-tree/neo-tree.nvim",   branch = "v2.x",} -- superior tree?
+  use { "nvim-neo-tree/neo-tree.nvim", branch = "v2.x", } -- superior tree?
 
   -- Terminal & utilities
   use 'akinsho/toggleterm.nvim' -- terminal toggler
   use 'akinsho/nvim-bufferline.lua' -- buffer navigation on top
   use 'famiu/bufdelete.nvim' -- buffer deletetion (default is annoying)
-  use 'dstein64/nvim-scrollview' -- scrollview helper
 
   -- Code Runners
   use { 'CRAG666/code_runner.nvim', require = 'nvim-lua/plenary.nvim' }
