@@ -22,6 +22,7 @@ packer.startup(function(use)
 
   -- hopping around
   use("phaazon/hop.nvim") -- vim move on stereoid (add more custom mapping).
+  use("ggandor/leap.nvim") -- Leap like kangaroo
   use("folke/which-key.nvim") -- manage your hotkey on steroid.
   use("stevearc/aerial.nvim") -- code overview
   use("dstein64/nvim-scrollview") -- scrollview helper
