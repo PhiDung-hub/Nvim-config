@@ -1,5 +1,7 @@
 local status, null_ls = pcall(require, "null-ls")
-if (not status) then return end
+if not status then
+  return
+end
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
 local formatting = null_ls.builtins.formatting
@@ -21,7 +23,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 --   })
 -- end
 
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
     -- python
@@ -30,12 +32,12 @@ null_ls.setup {
 
     -- JS, JSX, TSX
     diagnostics.eslint_d.with({
-      diagnostics_format = '[eslint] #{m}\n(#{c})'
+      diagnostics_format = "[eslint] #{m}\n(#{c})",
     }),
     formatting.prettier,
 
     -- lua
-    diagnostics.selene,
+    diagnostics.selene, -- take note of global 'vim': https://www.reddit.com/r/neovim/comments/wlkc7c/configuring_global_variablesvim_in_selene/?utm_source=share&utm_medium=web2x&context=3
     formatting.stylua,
 
     -- shell
@@ -43,7 +45,6 @@ null_ls.setup {
 
     -- utils
     completion.luasnip,
-
   },
 
   -- on_attach = function(client, bufnr)
@@ -58,15 +59,11 @@ null_ls.setup {
   --     })
   --   end
   -- end
-}
+})
 
-vim.api.nvim_create_user_command(
-  'DisableLspFormatting',
-  function()
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
-  end,
-  { nargs = 0 }
-)
+vim.api.nvim_create_user_command("DisableLspFormatting", function()
+  vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+end, { nargs = 0 })
 
 local unwrap = {
   method = null_ls.methods.DIAGNOSTICS,
@@ -77,7 +74,7 @@ local unwrap = {
       -- sources have access to a params object
       -- containing info about the current file and editor state
       for i, line in ipairs(params.content) do
-        local col, end_col = line:find "unwrap()"
+        local col, end_col = line:find("unwrap()")
         if col and end_col then
           -- null-ls fills in undefined positions
           -- and converts source diagnostics into the required format

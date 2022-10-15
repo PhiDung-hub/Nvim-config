@@ -1,9 +1,9 @@
 local status, colorizer = pcall(require, "colorizer")
-if (not status) then
+if not status then
   return
 end
 
-colorizer.setup {
+colorizer.setup({
   filetypes = { "*" },
   user_default_options = {
     RGB = true, -- #RGB hex codes
@@ -21,9 +21,9 @@ colorizer.setup {
     -- True is same as normal
     tailwind = false, -- Enable tailwind colors
     -- parsers can contain values used in |user_default_options|
-    sass = { enable = false, parsers = { css }, }, -- Enable sass colors
+    sass = { enable = false, parsers = { css } }, -- Enable sass colors
     virtualtext = "■",
   },
   -- all the sub-options of filetypes apply to buftypes
   buftypes = {},
-}
+})

@@ -1,14 +1,16 @@
 local status, aerial = pcall(require, "aerial")
-if (not status) then return end
+if not status then
+  return
+end
 
-aerial.setup {
+aerial.setup({
   backends = { "treesitter", "lsp", "markdown" },
 
   layout = {
     default_direction = "left",
     placement = "window",
-    min_width = { 30, .1 },
-    max_width = { 60, .2 },
+    min_width = { 30, 0.1 },
+    max_width = { 60, 0.2 },
     width = nil,
   },
 
@@ -16,18 +18,18 @@ aerial.setup {
   -- Useful for setting keymaps. Takes a single `bufnr` argument.
   on_attach = function(bufnr)
     -- Toggle the aerial window with <leader>a
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>a', '<cmd>AerialToggle!<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>a", "<cmd>AerialToggle!<CR>", {})
     -- Jump forwards/backwards with '{' and '}'
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>[', '<cmd>AerialPrev<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>]', '<cmd>AerialNext<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '2<leader>[', '<cmd>AerialPrev 2<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '2<leader>]', '<cmd>AerialNext 2<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '3<leader>[', '<cmd>AerialPrev 3<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '3<leader>]', '<cmd>AerialNext 3<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '4<leader>[', '<cmd>AerialPrev 4<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '4<leader>]', '<cmd>AerialNext 4<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '5<leader>[', '<cmd>AerialPrev 5<CR>', {})
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '5<leader>]', '<cmd>AerialNext 5<CR>', {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>[", "<cmd>AerialPrev<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>]", "<cmd>AerialNext<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "2<leader>[", "<cmd>AerialPrev 2<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "2<leader>]", "<cmd>AerialNext 2<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "3<leader>[", "<cmd>AerialPrev 3<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "3<leader>]", "<cmd>AerialNext 3<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "4<leader>[", "<cmd>AerialPrev 4<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "4<leader>]", "<cmd>AerialNext 4<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "5<leader>[", "<cmd>AerialPrev 5<CR>", {})
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "5<leader>]", "<cmd>AerialNext 5<CR>", {})
     -- -- Jump up the tree with '[[' or ']]'
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', '[[', '<cmd>AerialPrevUp<CR>', {})
     -- vim.api.nvim_buf_set_keymap(bufnr, 'n', ']]', '<cmd>AerialNextUp<CR>', {})
@@ -43,7 +45,8 @@ aerial.setup {
   --   switch_buffer - close aerial when you change buffers in the source window
   --   unsupported   - close aerial when attaching to a buffer that has no symbol source
   close_automatic_events = {
-    "unfocus", "unsupported",
+    "unfocus",
+    "unsupported",
   },
 
   -- Set to false to remove the default keybindings for the aerial buffer
@@ -182,4 +185,4 @@ aerial.setup {
     -- How long to wait (in ms) after a buffer change before updating
     update_delay = 300,
   },
-}
+})

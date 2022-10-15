@@ -1,14 +1,16 @@
 local status, saga = pcall(require, "lspsaga")
-if (not status) then return end
+if not status then
+  return
+end
 
-saga.init_lsp_saga {
+saga.init_lsp_saga({
   -- "single" | "double" | "rounded" | "bold" | "plus"
   border_style = "rounded",
   --the range of 0 for fully opaque window (disabled) to 100 for fully
   --transparent background. Values between 0-30 are typically most useful.
   saga_winblend = 20,
   -- when cursor in saga window you config these to move
-  move_in_saga = { prev = '<C-p>', next = '<C-n>' },
+  move_in_saga = { prev = "<C-p>", next = "<C-n>" },
   -- Error, Warn, Info, Hint
   -- diagnostic_header can be a function type
   -- must return a string and when diagnostic_header
@@ -34,9 +36,9 @@ saga.init_lsp_saga {
   },
   -- finder icons
   finder_icons = {
-    def = '  ',
-    ref = '諭 ',
-    link = '  ',
+    def = "  ",
+    ref = "諭 ",
+    link = "  ",
   },
   -- finder do lsp request timeout if your project big enough
   -- or your server very slow you may need to increase this value
@@ -53,11 +55,11 @@ saga.init_lsp_saga {
     exec = "<CR>",
   },
   definition_action_keys = {
-    edit = '<C-c>o',
-    vsplit = '<C-c>v',
-    split = '<C-c>i',
-    tabe = '<C-c>t',
-    quit = 'q',
+    edit = "<C-c>o",
+    vsplit = "<C-c>v",
+    split = "<C-c>i",
+    tabe = "<C-c>t",
+    quit = "q",
   },
   rename_action_quit = "<C-c>",
   rename_in_select = true,
@@ -65,7 +67,7 @@ saga.init_lsp_saga {
   symbol_in_winbar = {
     in_custom = false,
     enable = false,
-    separator = ' ',
+    separator = " ",
     show_file = true,
     -- define how to customize filename, eg: %:., %
     -- if not set, use default value `%:t`
@@ -76,15 +78,15 @@ saga.init_lsp_saga {
   },
   -- show outline
   show_outline = {
-    win_position = 'right',
+    win_position = "right",
     --set special filetype win that outline window split.like NvimTree neotree
     -- defx, db_ui
-    win_with = '',
+    win_with = "",
     win_width = 30,
     auto_enter = true,
     auto_preview = true,
-    virt_text = '┃',
-    jump_key = 'o',
+    virt_text = "┃",
+    jump_key = "o",
     -- auto refresh when change buffer
     auto_refresh = true,
   },
@@ -95,17 +97,17 @@ saga.init_lsp_saga {
   -- the related filetypes into this table
   -- like server_filetype_map = { metals = { "sbt", "scala" } }
   server_filetype_map = {
-    typescript = 'typescript',
-    clangd = 'cpp',
-    rust_analyzer = 'rust',
-  }
-}
+    typescript = "typescript",
+    clangd = "cpp",
+    rust_analyzer = "rust",
+  },
+})
 
 local nnoremap = require("helpers.keymap").nnoremap
 
 -- See Lspsaga plugin.
-nnoremap('<C-j>', '<cmd>Lspsaga diagnostic_jump_next<cr>')
-nnoremap('K', '<cmd>Lspsaga hover_doc<cr>')
-nnoremap('gd', '<cmd>Lspsaga lsp_finder<cr>')
-nnoremap('gp', '<cmd>Lspsaga peek_definition<cr>')
-nnoremap('gr', '<Cmd>Lspsaga rename<CR>')
+nnoremap("<C-j>", "<cmd>Lspsaga diagnostic_jump_next<cr>")
+nnoremap("K", "<cmd>Lspsaga hover_doc<cr>")
+nnoremap("gd", "<cmd>Lspsaga lsp_finder<cr>")
+nnoremap("gp", "<cmd>Lspsaga peek_definition<cr>")
+nnoremap("gr", "<Cmd>Lspsaga rename<CR>")

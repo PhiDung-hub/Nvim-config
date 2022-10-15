@@ -1,5 +1,40 @@
+local status_ok, mason = pcall(require, "mason")
+if not status_ok then
+  return
+end
+
+local status_ok_1, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not status_ok_1 then
+  return
+end
+
+-- Available server: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+local servers = {
+  "cssls",
+  "emmet_ls",
+  "html",
+  "jsonls",
+  "solang",
+  "terraformls",
+  "tsserver",
+  "tailwindcss",
+  "pyright",
+  "yamlls",
+  "bashls",
+  "clangd",
+  "rust_analyzer",
+}
+
+mason.setup({})
+mason_lspconfig.setup({
+  ensure_installed = servers,
+  automatic_installation = true,
+})
+
 local status, nvim_lsp = pcall(require, "lspconfig")
-if (not status) then return end
+if not status then
+  return
+end
 
 -- nvim_create_augroup({name}, {*opts}) nvim_create_augroup() Create or get an autocommand group autocmd-groups.
 local augroup_format = vim.api.nvim_create_augroup("Format", { clear = true })
@@ -16,84 +51,82 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
   -- Mappings.
   local opts = { noremap = true, silent = true, buffer = bufnr }
 
-  vim.keymap.set('n', '<leader>f', function()
-    vim.lsp.buf.format { async = true }
+  vim.keymap.set("n", "<leader>f", function()
+    vim.lsp.buf.format({ async = true })
   end, opts)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
   -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
   -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
-local protocol = require('vim.lsp.protocol')
+local protocol = require("vim.lsp.protocol")
 protocol.CompletionItemKind = {
-  '', -- Text
-  '', -- Method
-  '', -- Function
-  '', -- Constructor
-  '', -- Field
-  '', -- Variable
-  '', -- Class
-  'ﰮ', -- Interface
-  '', -- Module
-  '', -- Property
-  '', -- Unit
-  '', -- Value
-  '', -- Enum
-  '', -- Keyword
-  '﬌', -- Snippet
-  '', -- Color
-  '', -- File
-  '', -- Reference
-  '', -- Folder
-  '', -- EnumMember
-  '', -- Constant
-  '', -- Struct
-  '', -- Event
-  'ﬦ', -- Operator
-  '', -- TypeParameter
+  "", -- Text
+  "", -- Method
+  "", -- Function
+  "", -- Constructor
+  "", -- Field
+  "", -- Variable
+  "", -- Class
+  "ﰮ", -- Interface
+  "", -- Module
+  "", -- Property
+  "", -- Unit
+  "", -- Value
+  "", -- Enum
+  "", -- Keyword
+  "﬌", -- Snippet
+  "", -- Color
+  "", -- File
+  "", -- Reference
+  "", -- Folder
+  "", -- EnumMember
+  "", -- Constant
+  "", -- Struct
+  "", -- Event
+  "ﬦ", -- Operator
+  "", -- TypeParameter
 }
 
 -- Set up completion using nvim_cmp with LSP source
-local capabilities = require('cmp_nvim_lsp').update_capabilities(
-  protocol.make_client_capabilities()
-)
+local capabilities = require("cmp_nvim_lsp").update_capabilities(protocol.make_client_capabilities())
 
-nvim_lsp.tsserver.setup {
+nvim_lsp.tsserver.setup({
   on_attach = on_attach,
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
-  capabilities = capabilities
-}
+  capabilities = capabilities,
+})
 
-nvim_lsp.tailwindcss.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-nvim_lsp.cssls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
-
-nvim_lsp.rust_analyzer.setup {
+nvim_lsp.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-}
+})
+
+nvim_lsp.cssls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+nvim_lsp.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
 
 local clangd_cap = capabilities
 clangd_cap.textDocument.semanticHighlighting = true
 clangd_cap.offsetEncoding = "utf-16"
-nvim_lsp.clangd.setup {
+nvim_lsp.clangd.setup({
   on_attach = on_attach,
   capabilities = clangd_cap,
   cmd = {
@@ -105,43 +138,45 @@ nvim_lsp.clangd.setup {
     "--cross-file-rename",
     "--completion-style=detailed",
   },
-}
+})
 
-nvim_lsp.pyright.setup {
+nvim_lsp.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
-}
+})
 
-nvim_lsp.sumneko_lua.setup {
+nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
+  single_file_support = true,
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)
+    print("File Loaded")
     enable_format_on_save(client, bufnr)
   end,
   settings = {
     Lua = {
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { 'vim' },
+        globals = { "vim" },
       },
+
+      telemetry = { enable = false },
 
       workspace = {
         -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
-        checkThirdParty = false
+        checkThirdParty = false,
       },
     },
   },
-}
+})
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
   update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
-}
-)
+})
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -152,7 +187,7 @@ end
 
 vim.diagnostic.config({
   virtual_text = {
-    prefix = '●'
+    prefix = "●",
   },
   update_in_insert = false,
   float = {

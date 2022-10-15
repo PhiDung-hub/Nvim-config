@@ -1,6 +1,8 @@
 local status, cmp = pcall(require, "cmp")
-if (not status) then return end
-local lspkind = require 'lspkind'
+if not status then
+  return
+end
+local lspkind = require("lspkind")
 
 local luasnip = require("luasnip")
 
@@ -11,11 +13,11 @@ cmp.setup({
     end,
   },
   mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
+    ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+    ["<C-f>"] = cmp.mapping.scroll_docs(4),
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<C-e>"] = cmp.mapping.close(),
+    ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = false,
     }),
@@ -35,31 +37,31 @@ cmp.setup({
     end, { "i", "s" }),
   }),
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-    { name = 'luasnip' },
+    { name = "nvim_lsp" },
+    { name = "buffer" },
+    { name = "luasnip" },
   }),
   formatting = {
-    format = lspkind.cmp_format({ with_text = true, maxwidth = 60 })
-  }
+    format = lspkind.cmp_format({ with_text = true, maxwidth = 60 }),
+  },
 })
 
-cmp.setup.cmdline(':', {
+cmp.setup.cmdline(":", {
   sources = {
-    { name = 'cmdline' }
-  }
+    { name = "cmdline" },
+  },
 })
 
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline("/", {
   sources = {
-    { name = 'cmdline' }
-  }
+    { name = "cmdline" },
+  },
 })
 
-vim.cmd [[
+vim.cmd([[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
-]]
+]])
 
 -- " Use <Tab> and <S-Tab> to navigate through popup menu
 -- inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

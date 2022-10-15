@@ -1,7 +1,9 @@
 local status, zenMode = pcall(require, "zen-mode")
-if (not status) then return end
+if not status then
+  return
+end
 
-zenMode.setup {
+zenMode.setup({
   window = {
     backdrop = 0.9,
     width = 153,
@@ -24,25 +26,14 @@ zenMode.setup {
       ruler = true, -- disables the ruler text in the cmd line area
       showcmd = false, -- disables the command in the last line of the screen
     },
-    twilight = { enabled = true }, -- enable to start Twilight when zen mode opens
+    twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
     gitsigns = { enabled = false }, -- disables git signs
     tmux = { enabled = false }, -- disables the tmux statusline
-    scrollview = { enabled = true },
-    -- this will change the font size on kitty when in zen mode
-    -- to make this work, you need to set the following kitty options:
-    -- - allow_remote_control socket-only
-    -- - listen_on unix:/tmp/kitty
-    kitty = {
-      enabled = false,
-      font = "+4", -- font size increment
-    },
   },
   -- callback where you can add custom code when the Zen window opens
-  on_open = function(win)
-  end,
+  on_open = function() end,
   -- callback where you can add custom code when the Zen window closes
-  on_close = function()
-  end,
-}
+  on_close = function() end,
+})
 
-vim.keymap.set('n', '<C-M-O>', '<cmd>ZenMode<cr>', { silent = true })
+vim.keymap.set("n", "<C-M-O>", "<cmd>ZenMode<cr>", { silent = true })
