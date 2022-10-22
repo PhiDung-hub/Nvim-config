@@ -1,7 +1,9 @@
 local status, colortils = pcall(require, "colortils")
-if (not status) then return end
+if not status then
+  return
+end
 
-colortils.setup {
+colortils.setup({
   -- Register in which color codes will be copied
   register = "+",
   -- Preview for colors, if it contains `%s` this will be replaced with a hex color code of the color
@@ -41,5 +43,5 @@ colortils.setup {
     transparency = "T",
     -- choose the background (for transparent colors)
     choose_background = "B",
-  }
-}
+  },
+})

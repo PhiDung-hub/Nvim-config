@@ -28,7 +28,7 @@ null_ls.setup({
   sources = {
     -- python
     formatting.black.with({ extra_args = { "--fast" } }),
-    diagnostics.pylint,
+    -- diagnostics.pylint,
 
     -- JS, JSX, TSX
     diagnostics.eslint_d.with({

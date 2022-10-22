@@ -12,6 +12,10 @@ nnoremap("q", "<C-v>")
 -- Tab
 inoremap("<S-tab>", "<C-d>")
 
+-- Go to start and end of line in insert mode.
+inoremap("<C-Down>", "<Home>")
+inoremap("<C-Up>", "<End>")
+
 -- window and file management
 nnoremap("<C-a>", "gg<S-v>G") -- select all
 nnoremap("<F3>", "gg=G<C-o>") -- reformat entire file with F3

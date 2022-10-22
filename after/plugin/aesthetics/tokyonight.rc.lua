@@ -1,5 +1,7 @@
 local status, tokyonight = pcall(require, "tokyonight")
-if (not status) then return end
+if not status then
+  return
+end
 
 -- vim.g.tokyonight_transparent_sidebar = true
 -- vim.g.tokyonight_transparent = true
@@ -7,7 +9,7 @@ if (not status) then return end
 -- vim.g.tokyonight_style = "night"
 -- vim.g.tokyonight_italic_functions = true
 
-tokyonight.setup {
+tokyonight.setup({
   style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
   transparent = false, -- Enable this to disable setting the background color
   terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
@@ -41,6 +43,8 @@ tokyonight.setup {
   ---@param highlights Highlights
   ---@param colors ColorScheme
   on_highlights = function(highlights, colors) end,
-}
+})
 
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd([[colorscheme tokyonight]])
+-- WARNING: MAKE SURE TO PUT ALL CUSTOM HIGHLIGHT AFTER OTHERWISE TOKYONIGHT WILL OVERIGHT
+vim.cmd([[highlight CursorLineNR ctermfg=cyan guifg=cyan gui=bold ]]) -- highlight style

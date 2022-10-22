@@ -15,7 +15,7 @@ local servers = {
   "html",
   "jsonls",
   "solang",
-  "terraformls",
+  "solidity",
   "tsserver",
   "tailwindcss",
   "pyright",
@@ -64,9 +64,7 @@ local on_attach = function(_, bufnr)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  -- buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
 local protocol = require("vim.lsp.protocol")
@@ -103,9 +101,34 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities(protocol.make_
 
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+  filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
+})
+
+nvim_lsp.html.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango" },
+})
+
+nvim_lsp.cssls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
+nvim_lsp.emmet_ls.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "htmldjango", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" },
+  init_options = {
+    html = {
+      options = {
+        -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+        ["bem.enabled"] = true,
+      },
+    },
+  },
 })
 
 nvim_lsp.tailwindcss.setup({
@@ -145,6 +168,16 @@ nvim_lsp.pyright.setup({
   on_attach = on_attach,
 })
 
+nvim_lsp.solang.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+nvim_lsp.solidity.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
 nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
   single_file_support = true,
@@ -173,7 +206,7 @@ nvim_lsp.sumneko_lua.setup({
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
-  update_in_insert = false,
+  update_in_insert = true,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 })
@@ -189,7 +222,7 @@ vim.diagnostic.config({
   virtual_text = {
     prefix = "●",
   },
-  update_in_insert = false,
+  update_in_insert = true,
   float = {
     source = "always", -- Or "if_many"
   },
