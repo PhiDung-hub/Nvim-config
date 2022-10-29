@@ -32,14 +32,15 @@ nnoremap("zl", "<C-w>l")
 
 -- Copy and paste
 -- This is set in window terminal and directly affect neovim
-nnoremap("<C-c>", "y")
-vnoremap("<C-c>", "y")
+nnoremap("<C-c>", '"+y')
+vnoremap("<C-c>", '"+y')
 
 -- Deletion
 inoremap("<C-H>", "<C-w>") -- C-H == C-BS https://www.reddit.com/r/neovim/comments/okbag3/comment/h58k9p7/?utm_source=share&utm_medium=web2x&context=3
 
 -- Do, undo.
 inoremap("<C-Z>", "<C-O>u")
+nnoremap("<C-Z>", "u")
 inoremap("<C-Y>", "<C-O><C-R>")
 
 -- press Ctrl-S to save

@@ -23,6 +23,7 @@ local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 --   })
 -- end
 
+-- WARNING: Make sure to install these tools using Mason.
 null_ls.setup({
   debug = false,
   sources = {
@@ -40,10 +41,17 @@ null_ls.setup({
     diagnostics.selene, -- take note of global 'vim': https://www.reddit.com/r/neovim/comments/wlkc7c/configuring_global_variablesvim_in_selene/?utm_source=share&utm_medium=web2x&context=3
     formatting.stylua,
 
-    -- shell
-    diagnostics.shellcheck,
+    -- markdown
+    -- diagnostics.markdownlint.with({
+    --   line_length = 150,
+    --   ignore_code_blocks = true,
+    --   disabled_filetypes = {},
+    -- ),
 
-    -- utils
+    -- shell
+    -- diagnostics.shellcheck,
+
+    -- snippets & utils
     completion.luasnip,
   },
 

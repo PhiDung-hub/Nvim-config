@@ -9,6 +9,7 @@ if not status_ok_1 then
 end
 
 -- Available server: https://github.com/williamboman/mason-lspconfig.nvim#available-lsp-servers
+-- With instruction for config: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 local servers = {
   "cssls",
   "emmet_ls",
@@ -23,6 +24,7 @@ local servers = {
   "bashls",
   "clangd",
   "rust_analyzer",
+  "marksman",
 }
 
 mason.setup({})
@@ -99,24 +101,29 @@ protocol.CompletionItemKind = {
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require("cmp_nvim_lsp").default_capabilities(protocol.make_client_capabilities())
 
+-- markdown
+-- nvim_lsp.marksman.setup({
+--   on_attach = on_attach,
+--   filetypes = { "markdown", "markdown.mdx" },
+--   capabilities = capabilities,
+-- })
+
+-- javascript & react & html & css
 nvim_lsp.tsserver.setup({
   on_attach = on_attach,
   filetypes = { "javascript", "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
 })
-
 nvim_lsp.html.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = { "html", "htmldjango" },
 })
-
 nvim_lsp.cssls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
-
 nvim_lsp.emmet_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
@@ -130,22 +137,18 @@ nvim_lsp.emmet_ls.setup({
     },
   },
 })
-
 nvim_lsp.tailwindcss.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
-nvim_lsp.cssls.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
+-- rust
 nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach,
   capabilities = capabilities,
 })
 
+-- cpp
 local clangd_cap = capabilities
 clangd_cap.textDocument.semanticHighlighting = true
 clangd_cap.offsetEncoding = "utf-16"
@@ -163,11 +166,13 @@ nvim_lsp.clangd.setup({
   },
 })
 
+-- Python
 nvim_lsp.pyright.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })
 
+-- Solidity
 nvim_lsp.solang.setup({
   capabilities = capabilities,
   on_attach = on_attach,
@@ -178,6 +183,7 @@ nvim_lsp.solidity.setup({
   on_attach = on_attach,
 })
 
+-- lua & neovim
 nvim_lsp.sumneko_lua.setup({
   capabilities = capabilities,
   single_file_support = true,

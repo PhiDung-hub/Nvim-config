@@ -11,7 +11,7 @@ packer.startup(function(use)
   use("nvim-lua/plenary.nvim") -- for lua config
 
   -- Friendly dashboard
-  use("glepnir/dashboard-nvim") -- wibu dashboard: https://github.com/glepnir/dashboard-nvim
+  -- use("glepnir/dashboard-nvim") -- wibu dashboard: https://github.com/glepnir/dashboard-nvim
 
   -- Colormode and status line
   use("folke/tokyonight.nvim") -- color theme
@@ -22,6 +22,7 @@ packer.startup(function(use)
 
   -- Comment and uncomment
   use("numToStr/Comment.nvim")
+  use("JoosepAlviste/nvim-ts-context-commentstring")
   use("folke/todo-comments.nvim")
 
   -- Syntax highlighting and code formatting.
@@ -33,10 +34,14 @@ packer.startup(function(use)
   })
   use("kyazdani42/nvim-web-devicons") -- File icons.
   use("https://github.com/NvChad/nvim-colorizer.lua") -- maintained colorizer
-  use("mhartington/formatter.nvim") -- code formatter.
+  -- use("mhartington/formatter.nvim") -- code formatter.
   use("MunifTanjim/nui.nvim") -- ui packageo for neo-tree
   use("p00f/nvim-ts-rainbow") -- rainbow bracket
   use("lukas-reineke/indent-blankline.nvim") -- identation helpers
+
+  -- HTML and JSX tag auto complete
+  use("windwp/nvim-autopairs") -- auto pairs
+  use("windwp/nvim-ts-autotag") -- auto tag
 
   -- git utils
   use("lewis6991/gitsigns.nvim") -- viewing git
@@ -44,10 +49,9 @@ packer.startup(function(use)
 
   -- hopping around
   use("phaazon/hop.nvim") -- vim move on stereoid (add more custom mapping).
-  use("ggandor/leap.nvim") -- Leap like kangaroo
+  -- use("ggandor/leap.nvim") -- Leap like kangaroo
   use("folke/which-key.nvim") -- manage your hotkey on steroid.
   use("stevearc/aerial.nvim") -- code overview
-  use("dstein64/nvim-scrollview") -- scrollview helper
   use("petertriho/nvim-scrollbar") -- scrollview alternative
 
   -- LSP and ít utilities
@@ -100,9 +104,5 @@ packer.startup(function(use)
   use("mfussenegger/nvim-dap-python")
 
   -- Session manager
-  use("rmagatti/auto-session")
-
-  -- HTML and JSX tag auto complete
-  use("windwp/nvim-autopairs") -- auto pairs
-  use("windwp/nvim-ts-autotag") -- auto tag
+  use("Shatur/neovim-session-manager")
 end)

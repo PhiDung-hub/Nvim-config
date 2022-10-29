@@ -89,11 +89,6 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/aerial.nvim",
     url = "https://github.com/stevearc/aerial.nvim"
   },
-  ["auto-session"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/auto-session",
-    url = "https://github.com/rmagatti/auto-session"
-  },
   ["bufdelete.nvim"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/bufdelete.nvim",
@@ -129,16 +124,6 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/colortils.nvim",
     url = "https://github.com/nvim-colortils/colortils.nvim"
   },
-  ["dashboard-nvim"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/dashboard-nvim",
-    url = "https://github.com/glepnir/dashboard-nvim"
-  },
-  ["formatter.nvim"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/formatter.nvim",
-    url = "https://github.com/mhartington/formatter.nvim"
-  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -158,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim",
     url = "https://github.com/lukas-reineke/indent-blankline.nvim"
-  },
-  ["leap.nvim"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/leap.nvim",
-    url = "https://github.com/ggandor/leap.nvim"
   },
   ["lsp_signature.nvim"] = {
     loaded = true,
@@ -208,6 +188,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
+  },
+  ["neovim-session-manager"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/neovim-session-manager",
+    url = "https://github.com/Shatur/neovim-session-manager"
   },
   ["nui.nvim"] = {
     loaded = true,
@@ -269,11 +254,6 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-scrollbar",
     url = "https://github.com/petertriho/nvim-scrollbar"
   },
-  ["nvim-scrollview"] = {
-    loaded = true,
-    path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-scrollview",
-    url = "https://github.com/dstein64/nvim-scrollview"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -283,6 +263,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-ts-autotag",
     url = "https://github.com/windwp/nvim-ts-autotag"
+  },
+  ["nvim-ts-context-commentstring"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/nvim-ts-context-commentstring",
+    url = "https://github.com/JoosepAlviste/nvim-ts-context-commentstring"
   },
   ["nvim-ts-rainbow"] = {
     loaded = true,

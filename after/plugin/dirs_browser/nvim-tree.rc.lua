@@ -8,11 +8,11 @@ if not config_status_ok then
   return
 end
 
-local icons = require "icons"
+local icons = require("icons")
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup {
+nvim_tree.setup({
   actions = {
     change_dir = {
       enable = false,
@@ -64,7 +64,7 @@ nvim_tree.setup {
       info = icons.diagnostics.Information,
       warning = icons.diagnostics.Warning,
       error = icons.diagnostics.Error,
-  },
+    },
   },
 
   update_focused_file = {
@@ -72,9 +72,8 @@ nvim_tree.setup {
     update_cwd = true,
   },
 
-
   filters = {
-    custom = { "^.git$", '^.sqlite$', 'cache/' },
+    custom = { "^.git$", "^.sqlite$", "cache/" },
   },
 
   view = {
@@ -82,14 +81,14 @@ nvim_tree.setup {
     mappings = {
       custom_only = false,
       list = {
-        { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
-        { key = "v", cb = tree_cb "vsplit" },
+        { key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
+        { key = "v", cb = tree_cb("vsplit") },
       },
     },
     number = true,
     relativenumber = false,
   },
-}
+})
 
 local nnoremap = require("helpers.keymap").nnoremap
 nnoremap("<leader>t", "<cmd>NvimTreeToggle<CR>") -- toggle nvim-treekj

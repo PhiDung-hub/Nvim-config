@@ -3,8 +3,6 @@ if not status_ok then
   return
 end
 
-local icons = require("icons")
-
 local cfg = {
   debug = false, -- set to true to enable debug logging
   log_path = vim.fn.stdpath("cache") .. "/lsp_signature.log", -- log dir when debug is on

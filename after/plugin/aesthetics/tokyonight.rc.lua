@@ -30,21 +30,28 @@ tokyonight.setup({
   dim_inactive = true, -- dims inactive windows
   lualine_bold = true, -- When `true`, section headers in the lualine theme will be bold
 
-  --- You can override specific color groups to use other groups or a hex color
-  --- function will be called with a ColorScheme table
+  -- You can override specific color groups to use other groups or a hex color
+  -- function will be called with a ColorScheme table
+  -- See list of color scheme here: https://github.com/folke/tokyonight.nvim/blob/main/lua/tokyonight/colors.lua
   ---@param colors ColorScheme
   on_colors = function(colors)
     colors.bg = "#17171F"
     colors.bg_dark = "#131317"
+    colors.fg = "#c0caf5"
+    colors.fg_dark = "#a9b1d6"
+    colors.comment = "#565f89"
   end,
 
   --- You can override specific highlights to use other groups or a hex color
   --- function will be called with a Highlights and ColorScheme table
   ---@param highlights Highlights
   ---@param colors ColorScheme
-  on_highlights = function(highlights, colors) end,
+  -- on_highlights = function(highlights, colors) end,
 })
 
 vim.cmd([[colorscheme tokyonight]])
+
 -- WARNING: MAKE SURE TO PUT ALL CUSTOM HIGHLIGHT AFTER OTHERWISE TOKYONIGHT WILL OVERIGHT
-vim.cmd([[highlight CursorLineNR ctermfg=cyan guifg=cyan gui=bold ]]) -- highlight style
+vim.cmd([[ highlight LineNR ctermfg=darkyellow guifg=#d9ad34 ]]) -- highlight style
+vim.cmd([[ highlight CursorLineNR ctermfg=cyan guifg=cyan gui=italic ]]) -- highlight style
+-- vim.cmd([[highlight LineNR ctermfg=darkgray guifg=darkgray ]]) -- highlight style

@@ -10,18 +10,14 @@ end
 vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
 -- If you want icons for diagnostic errors, you'll need to define them somewhere:
-vim.fn.sign_define("DiagnosticSignError",
-  { text = " ", texthl = "DiagnosticSignError" })
-vim.fn.sign_define("DiagnosticSignWarn",
-  { text = " ", texthl = "DiagnosticSignWarn" })
-vim.fn.sign_define("DiagnosticSignInfo",
-  { text = " ", texthl = "DiagnosticSignInfo" })
-vim.fn.sign_define("DiagnosticSignHint",
-  { text = "", texthl = "DiagnosticSignHint" })
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "", texthl = "DiagnosticSignHint" })
 -- NOTE: this is changed from v1.x, which used the old style of highlight groups
 -- in the form "LspDiagnosticsSignWarning"
 
-neotree.setup {
+neotree.setup({
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
   enable_git_status = true,
@@ -33,7 +29,7 @@ neotree.setup {
   },
   default_component_configs = {
     container = {
-      enable_character_fade = true
+      enable_character_fade = true,
     },
     indent = {
       indent_size = 2,
@@ -56,7 +52,7 @@ neotree.setup {
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
       default = "*",
-      highlight = "NeoTreeFileIcon"
+      highlight = "NeoTreeFileIcon",
     },
     modified = {
       symbol = "[+]",
@@ -72,15 +68,15 @@ neotree.setup {
         -- Change type
         -- added     = "✚", -- or "✚", but this is redundant info if you use git_status_colors on the name
         -- modified  = "", -- or "", but this is redundant info if you use git_status_colors on the name
-        deleted   = "✖", -- this can only be used in the git_status source
-        renamed   = "", -- this can only be used in the git_status source
+        deleted = "✖", -- this can only be used in the git_status source
+        renamed = "", -- this can only be used in the git_status source
         -- Status type
         untracked = "",
-        ignored   = "",
-        unstaged  = "",
-        staged    = "",
-        conflict  = "",
-      }
+        ignored = "",
+        unstaged = "",
+        staged = "",
+        conflict = "",
+      },
     },
   },
   window = {
@@ -117,13 +113,13 @@ neotree.setup {
       -- ["t"] = "open_tab_drop",
       ["w"] = "open_with_window_picker",
       ["C"] = "close_node",
-      -- ["<leader>z"] = "close_all_nodes",
+      ["<leader>cz"] = "close_all_nodes",
       ["<leader>Z"] = "expand_all_nodes",
       ["a"] = {
         "add",
         config = {
-          show_path = "none" -- "none", "relative", "absolute"
-        }
+          show_path = "none", -- "none", "relative", "absolute"
+        },
       },
       ["A"] = "add_directory", -- also accepts the optional config.show_path option like "add".
       ["d"] = "delete",
@@ -138,7 +134,7 @@ neotree.setup {
       ["?"] = "show_help",
       ["<"] = "prev_source",
       [">"] = "next_source",
-    }
+    },
   },
   nesting_rules = {},
   filesystem = {
@@ -148,11 +144,11 @@ neotree.setup {
       hide_gitignored = true,
       hide_hidden = true, -- only works on Windows for hidden files/directories
       hide_by_name = {
-        "node_modules"
+        "node_modules",
       },
       hide_by_pattern = { -- uses glob style patterns
         --"*.meta",
-        "node_modules/*"
+        "node_modules/*",
         --"*/src/*/tsconfig.json",
       },
       always_show = { -- remains visible even if other settings would normally hide it
@@ -187,8 +183,8 @@ neotree.setup {
         ["<c-x>"] = "clear_filter",
         ["[g"] = "prev_git_modified",
         ["]g"] = "next_git_modified",
-      }
-    }
+      },
+    },
   },
   buffers = {
     follow_current_file = true, -- This will find and focus the file in the active buffer every
@@ -200,24 +196,24 @@ neotree.setup {
         ["bd"] = "buffer_delete",
         ["<bs>"] = "navigate_up",
         ["."] = "set_root",
-      }
+      },
     },
   },
   git_status = {
     window = {
       position = "float",
       mappings = {
-        ["A"]  = "git_add_all",
+        ["A"] = "git_add_all",
         ["gu"] = "git_unstage_file",
         ["ga"] = "git_add_file",
         ["gr"] = "git_revert_file",
         ["gc"] = "git_commit",
         ["gp"] = "git_push",
         ["gg"] = "git_commit_and_push",
-      }
-    }
-  }
-}
+      },
+    },
+  },
+})
 
 local nnoremap = require("helpers.keymap").nnoremap
-nnoremap('<M-t>', '<Cmd>NeoTreeFocusToggle<CR>')
+nnoremap("<M-t>", "<Cmd>NeoTreeFocusToggle<CR>")
