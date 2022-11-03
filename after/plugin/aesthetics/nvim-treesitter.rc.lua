@@ -22,7 +22,6 @@ ts.setup({
     "rust",
     "gitignore",
     "lua",
-    "c",
     "cpp",
     "python",
     "toml",
@@ -31,6 +30,7 @@ ts.setup({
     "css",
     "scss",
     "html",
+    "sql",
   },
   autotag = {
     enable = true,

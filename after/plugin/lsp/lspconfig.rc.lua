@@ -25,6 +25,7 @@ local servers = {
   "clangd",
   "rust_analyzer",
   "marksman",
+  "prismals",
 }
 
 mason.setup({})
@@ -179,6 +180,12 @@ nvim_lsp.solang.setup({
 })
 
 nvim_lsp.solidity.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- prisma
+nvim_lsp.prismals.setup({
   capabilities = capabilities,
   on_attach = on_attach,
 })

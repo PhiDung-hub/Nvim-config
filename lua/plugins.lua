@@ -34,7 +34,7 @@ packer.startup(function(use)
   })
   use("kyazdani42/nvim-web-devicons") -- File icons.
   use("https://github.com/NvChad/nvim-colorizer.lua") -- maintained colorizer
-  -- use("mhartington/formatter.nvim") -- code formatter.
+  use("mhartington/formatter.nvim") -- code formatter.
   use("MunifTanjim/nui.nvim") -- ui packageo for neo-tree
   use("p00f/nvim-ts-rainbow") -- rainbow bracket
   use("lukas-reineke/indent-blankline.nvim") -- identation helpers

@@ -13,7 +13,6 @@ local completion = null_ls.builtins.completion
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- ** UNCOMMENT THIS & on_attach() IN SET UP FOR FORMMATING ON SAVE **
---
 -- local lsp_formatting = function(bufnr)
 --   vim.lsp.buf.format({
 --     filter = function(client)

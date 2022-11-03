@@ -124,6 +124,11 @@ _G.packer_plugins = {
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/colortils.nvim",
     url = "https://github.com/nvim-colortils/colortils.nvim"
   },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/home/phi/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/phi/.local/share/nvim/site/pack/packer/start/friendly-snippets",
