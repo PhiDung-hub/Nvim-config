@@ -72,32 +72,32 @@ vim.api.nvim_create_user_command("DisableLspFormatting", function()
   vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
 end, { nargs = 0 })
 
-local unwrap = {
-  method = null_ls.methods.DIAGNOSTICS,
-  filetypes = { "rust" },
-  generator = {
-    fn = function(params)
-      local diag = {}
-      -- sources have access to a params object
-      -- containing info about the current file and editor state
-      for i, line in ipairs(params.content) do
-        local col, end_col = line:find("unwrap()")
-        if col and end_col then
-          -- null-ls fills in undefined positions
-          -- and converts source diagnostics into the required format
-          table.insert(diag, {
-            row = i,
-            col = col,
-            end_col = end_col,
-            source = "unwrap",
-            message = "hey " .. os.getenv("USER") .. ", don't forget to handle this",
-            severity = 2,
-          })
-        end
-      end
-      return diag
-    end,
-  },
-}
-
-null_ls.register(unwrap)
+--[[ local unwrap = { ]]
+--[[   method = null_ls.methods.DIAGNOSTICS, ]]
+--[[   filetypes = { "rust" }, ]]
+--[[   generator = { ]]
+--[[     fn = function(params) ]]
+--[[       local diag = {} ]]
+--[[       -- sources have access to a params object ]]
+--[[       -- containing info about the current file and editor state ]]
+--[[       for i, line in ipairs(params.content) do ]]
+--[[         local col, end_col = line:find("unwrap()") ]]
+--[[         if col and end_col then ]]
+--[[           -- null-ls fills in undefined positions ]]
+--[[           -- and converts source diagnostics into the required format ]]
+--[[           table.insert(diag, { ]]
+--[[             row = i, ]]
+--[[             col = col, ]]
+--[[             end_col = end_col, ]]
+--[[             source = "unwrap", ]]
+--[[             message = "hey " .. os.getenv("USER") .. ", don't forget to handle this", ]]
+--[[             severity = 2, ]]
+--[[           }) ]]
+--[[         end ]]
+--[[       end ]]
+--[[       return diag ]]
+--[[     end, ]]
+--[[   }, ]]
+--[[ } ]]
+--[[]]
+--[[ null_ls.register(unwrap) ]]

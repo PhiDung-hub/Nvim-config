@@ -15,8 +15,8 @@ local servers = {
   "emmet_ls",
   "html",
   "jsonls",
-  "solang",
   "solidity",
+  "solc",
   "tsserver",
   "tailwindcss",
   "pyright",
@@ -174,11 +174,6 @@ nvim_lsp.pyright.setup({
 })
 
 -- Solidity
-nvim_lsp.solang.setup({
-  capabilities = capabilities,
-  on_attach = on_attach,
-})
-
 nvim_lsp.solidity.setup({
   capabilities = capabilities,
   on_attach = on_attach,
