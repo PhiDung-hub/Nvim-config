@@ -106,3 +106,10 @@ packer.startup(function(use)
   -- Session manager
   use("Shatur/neovim-session-manager")
 end)
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+  augroup end
+]])

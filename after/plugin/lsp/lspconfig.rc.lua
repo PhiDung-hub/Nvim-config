@@ -144,6 +144,7 @@ nvim_lsp.tailwindcss.setup({
 })
 
 -- rust
+-- rustfmt for formatting: https://rust-lang.github.io/rustfmt/?version=v1.5.1&search
 nvim_lsp.rust_analyzer.setup({
   on_attach = on_attach,
   capabilities = capabilities,

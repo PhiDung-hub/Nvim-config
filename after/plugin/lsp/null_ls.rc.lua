@@ -40,6 +40,8 @@ null_ls.setup({
     diagnostics.selene, -- take note of global 'vim': https://www.reddit.com/r/neovim/comments/wlkc7c/configuring_global_variablesvim_in_selene/?utm_source=share&utm_medium=web2x&context=3
     formatting.stylua,
 
+    formatting.rustfmt,
+
     -- markdown
     -- diagnostics.markdownlint.with({
     --   line_length = 150,
