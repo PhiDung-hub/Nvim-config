@@ -4,7 +4,7 @@ if not status then
   return
 end
 
-vim.cmd([[packadd packer.nvim]])
+-- vim.cmd([[packadd packer.nvim]])
 
 packer.startup(function(use)
   use("wbthomason/packer.nvim") -- plugin manager
@@ -85,7 +85,6 @@ packer.startup(function(use)
   use("nvim-telescope/telescope.nvim") -- telescope
   use("nvim-telescope/telescope-file-browser.nvim") -- telescope helpers
   use("nvim-telescope/telescope-media-files.nvim") -- preview image
-  -- use 'kyazdani42/nvim-tree.lua' -- tree browser, switched to neo-tree
   use({ "nvim-neo-tree/neo-tree.nvim", branch = "v2.x" }) -- superior tree
 
   -- Terminal & utilities
@@ -106,10 +105,3 @@ packer.startup(function(use)
   -- Session manager
   use("Shatur/neovim-session-manager")
 end)
-
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
