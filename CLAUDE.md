@@ -22,7 +22,6 @@ Entry: `init.lua` → `vim.loader.enable()`, then `require("config.lazy")` and `
 │   │   ├── language_server_protocols/         # LSP, blink.cmp, conform, lspsaga, mason,
 │   │   │   └── 3rd_party_plugins/             #   nvim-lint, treesitter, render-markdown / supermaven, codecompanion
 │   │   └── gits/                              # gitsigns
-│   └── snippets/{cpp,rust}.lua
 └── lazy-lock.json
 ```
 
