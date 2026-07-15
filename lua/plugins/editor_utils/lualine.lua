@@ -3,11 +3,9 @@ return {
   event = "VeryLazy",
   opts = {
     options = {
-      icons_enabled = true,
       theme = "kanagawa",
       section_separators = { left = "", right = "" },
       component_separators = { left = "", right = "|" },
-      disabled_filetypes = {},
     },
     sections = {
       lualine_a = { "mode" },
@@ -29,6 +27,5 @@ return {
       lualine_y = {},
       lualine_z = {},
     },
-    extensions = { "fugitive" },
   },
 }

@@ -1,12 +1,8 @@
 return {
   "folke/which-key.nvim", -- manage hotkey
   event = "VeryLazy",
+  -- v3 API: disable.ft (the old disable.filetypes key is ignored)
   opts = {
-    -- disable the WhichKey popup for certain buf types and file types.
-    -- Disabled by deafult for Telescope
-    disable = {
-      buftypes = {},
-      filetypes = { "TelescopePrompt" },
-    },
+    disable = { ft = { "TelescopePrompt" } },
   },
 }

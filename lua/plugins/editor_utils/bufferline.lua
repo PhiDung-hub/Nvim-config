@@ -18,17 +18,12 @@ return {
   },
   opts = {
     options = {
-      -- separator_style = "thin",
       numbers = "ordinal",
-      -- left_mouse_command = "buffer %d",
-      -- middle_mouse_command = "Bdelete! %d",
       indicator = { icon = "▎", style = "icon" },
       diagnostics_indicator = function(count)
         return count > 9 and "9+" or tostring(count)
       end,
       modified_icon = "●",
-      -- left_trunc_marker = "",
-      -- right_trunc_marker = "",
       max_name_length = 25,
       max_prefix_length = 25,
       tab_size = 18,
@@ -36,9 +31,6 @@ return {
       diagnostics_update_in_insert = false,
       offsets = { { filetype = "neo-tree", text = "File System", text_align = "center" } },
       show_buffer_icons = true,
-      -- show_buffer_close_icons = false,
-      -- show_close_icon = false,
-      -- show_tab_indicators = false,
       persist_buffer_sort = true,
       enforce_regular_tabs = true,
       always_show_bufferline = true,

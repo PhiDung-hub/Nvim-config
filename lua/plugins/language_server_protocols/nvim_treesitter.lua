@@ -11,17 +11,8 @@ return {
     "windwp/nvim-ts-autotag",                      -- auto rename/close tags
   },
   config = function()
-    local ts_installed, ts = pcall(require, "nvim-treesitter.configs")
-    if not ts_installed then
-      print("WARNING: nvim-treesitter is unavailable.")
-      return
-    end
-
-    local rainbow_installed, delimiters = pcall(require, "rainbow-delimiters")
-    if not rainbow_installed then
-      print("WARNING: rainbow-delimiters is unavailable.")
-      return
-    end
+    local ts = require("nvim-treesitter.configs")
+    local delimiters = require("rainbow-delimiters")
 
     -- Native Neovim 0.10+ commenting with tsx/jsx context support
     vim.g.skip_ts_context_commentstring_module = true
@@ -68,10 +59,7 @@ return {
         additional_vim_regex_highlighting = false,
       },
 
-      indent = {
-        enable = true,
-        disable = {},
-      },
+      indent = { enable = true },
 
       auto_install = true,
       ensure_installed = {

@@ -59,52 +59,38 @@ opt.hidden = true                  -- hide abandoned buffer
 -- Fix markdown indentation settings
 vim.g.markdown_recommended_style = 0
 
--- Encodings
-vim.scriptencoding = "utf-8"
-opt.encoding = "utf-8"
-vim.bo.fileencoding = "utf-8"
-
 local TAB_SIZE = 2
 -- Editing settings
 opt.tabstop = TAB_SIZE                       -- using space`s
 opt.softtabstop = TAB_SIZE                   -- treat tab in editting as single character
 opt.shiftwidth = TAB_SIZE                    -- width of A LEVEL OF INDENTATION
-opt.smarttab = true                          -- insert Tab in a blank line will be determined by other places. Backspasce delete shiftwidth
-opt.autoindent = true                        -- New line inherit indentation of previous lines
 opt.smartindent = true                       -- Smart indentation when start a new line (for C-like programs).
 opt.expandtab = true                         -- Use space to insert a tab
 opt.wrap = false                             -- Wrap line when go beyond certain number of characters
-opt.backspace = { "start", "eol", "indent" } -- Allow backspacing over everything in insert mode
 opt.scrolloff = 10                           -- scroll editor when there is x lines left
 opt.sidescrolloff = 5
 opt.sidescroll = 5
 opt.completeopt = "menu,menuone,noselect,noinsert"
 opt.termguicolors = true -- True color support
 
--- Search
+-- Search (incsearch/hlsearch are on by default)
 opt.ignorecase = true -- case-insensitive search
 opt.smartcase = true  -- switch between case-sensitive whenever uppercase letter present
-opt.incsearch = true  -- incremental search (Default = ON)
-opt.hlsearch = true   -- Enable search highlighting (Default = ON)
 
 -- Current line
 opt.cursorline = true             -- Enable highlight cursor line
 opt.cursorlineopt = "number,line" -- Include number & whole line
-vim.report = 5
 
 vim.filetype.add({
   extension = {
     mdx = "lsp_markdown",
   },
-  filename = {},
-  pattern = {},
 })
 
 -- Native Treesitter folding (replaces nvim-ufo)
 opt.foldcolumn = "1"
 opt.foldlevel = 99
 opt.foldlevelstart = 99
-opt.foldenable = true
 opt.foldmethod = "expr"
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldtext = ""
@@ -122,11 +108,6 @@ vim.g.clipboard = {
   },
   cache_enabled = 0,
 }
-
-vim.g.latex_view_method = "zathura"
-vim.g.latex_view_general_viewer = "zathura"
-vim.g.latex_view_general_options = "--synctex-forward %l:1:%f %s"
-vim.g.latex_view_general_options_latexmk = "--synctex=1"
 
 require("lazy").setup({
   spec = {
