@@ -3,7 +3,7 @@ return {
   event = "InsertEnter",
   config = function()
     require("supermaven-nvim").setup({
-      -- Tab is owned by blink.cmp's smart <Tab>, which accepts the inline
+      -- Inline accept is owned by blink.cmp's smart keymap, which accepts the
       -- suggestion via the Supermaven API when no completion menu is open.
       disable_keymaps = true,
       ignore_filetypes = {},
