@@ -1,9 +1,9 @@
 return {
-  "williamboman/mason.nvim", -- LSP/DAP/Linters/Formatters installer
+  "mason-org/mason.nvim", -- LSP/DAP/Linters/Formatters installer
   cmd = "Mason",
   event = "VeryLazy",
   dependencies = {
-    "williamboman/mason-lspconfig.nvim",
+    "mason-org/mason-lspconfig.nvim",
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       opts = {

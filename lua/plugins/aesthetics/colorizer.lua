@@ -1,5 +1,5 @@
 return {
-  "https://github.com/NvChad/nvim-colorizer.lua",
+  "catgoose/nvim-colorizer.lua", -- maintained fork of NvChad/nvim-colorizer.lua
   event = "VeryLazy",
   -- Only deltas from plugin defaults.
   opts = {

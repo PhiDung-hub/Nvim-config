@@ -1,5 +1,5 @@
 return {
-  "akinsho/nvim-bufferline.lua",
+  "akinsho/bufferline.nvim",
   event = "BufReadPost",
   keys = {
     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next buffer" },

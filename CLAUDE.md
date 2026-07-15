@@ -14,13 +14,13 @@ Entry: `init.lua` → `vim.loader.enable()`, then `require("config.lazy")` and `
 │   │   ├── lazy.lua                           # Lazy bootstrap + all vim.opt settings + spec imports
 │   │   └── keymaps.lua                        # Global keybindings (local map = vim.keymap.set)
 │   ├── plugins/
-│   │   ├── init.lua                           # Startup dep: plenary.nvim only
+│   │   ├── init.lua                           # plenary.nvim (lazy, on require)
 │   │   ├── aesthetics/                        # kanagawa (+color_schemes/), indent-blankline,
 │   │   │                                      #   web-devicons, colorizer, todo-comments
 │   │   ├── editor_utils/                      # neo-tree, telescope, toggleterm, which-key, lualine,
-│   │   │                                      #   autopairs, bigfile, bufferline, trouble, persistence
+│   │   │                                      #   autopairs, bigfile, bufferline, persistence
 │   │   ├── language_server_protocols/         # LSP, blink.cmp, conform, lspsaga, mason,
-│   │   │   └── 3rd_party_plugins/             #   nvim-lint, treesitter, render-markdown / supermaven
+│   │   │   └── 3rd_party_plugins/             #   nvim-lint, treesitter, render-markdown / supermaven, codecompanion
 │   │   └── gits/                              # gitsigns
 │   └── snippets/{cpp,rust}.lua
 └── lazy-lock.json
@@ -41,7 +41,7 @@ Spec imports (in `lua/config/lazy.lua`): `plugins`, `plugins.editor_utils`, `plu
 
 ## Plugins
 
-Only **plenary.nvim** loads at startup (`plugins/init.lua`). Everything else is lazy-loaded.
+Everything is lazy-loaded — zero startup plugins (plenary is `lazy = true`, pulled in on `require`).
 
 ### Lazy-load triggers
 ```
@@ -52,12 +52,13 @@ BufReadPost/NewFile → gitsigns, treesitter, bufferline
 VeryLazy            → lualine, indent-blankline, which-key, mason, nvim-lint, colorizer, todo-comments
 LspAttach           → lspsaga
 ft=markdown         → render-markdown.nvim
-keys/cmd            → neo-tree, telescope, toggleterm, conform, trouble
+keys/cmd            → neo-tree, telescope, toggleterm, conform, codecompanion
 ```
 
 ### Notable plugins
 - **blink.cmp** — completion engine (replaces nvim-cmp). Sources: lsp, path, snippets, buffer.
-- **supermaven-nvim** — inline ghost-text AI (the only AI plugin). Accept handled by blink (see Completion).
+- **supermaven-nvim** — inline ghost-text AI. Accept handled by blink (see Completion).
+- **codecompanion.nvim** — AI chat/inline over OpenRouter free models (needs `OPENROUTER_API_KEY`). `<leader>aa` toggle chat, `<leader>ae` add selection.
 - **conform.nvim** — formatting (replaces none-ls), format-on-save via `BufWritePre`.
 - **nvim-lspconfig + mason** — LSP. **lspsaga** — LSP UI (hover/finder/rename/outline).
 - **nvim-treesitter** (master branch, pinned) — highlight/indent/folding; rainbow-delimiters, ts-context-commentstring, ts-autotag deps.
@@ -65,7 +66,7 @@ keys/cmd            → neo-tree, telescope, toggleterm, conform, trouble
 - **bigfile.nvim** — disables heavy features on files >1.5 MB.
 - **render-markdown.nvim** — inline in-buffer markdown rendering (replaces browser preview).
 - **kanagawa** colorscheme (priority 1000), **lualine**, **gitsigns**, **which-key**, **toggleterm**, **autopairs**, **indent-blankline**, **web-devicons**.
-- **bufferline** (buffer tabs, normal-mode `<Tab>`/`<S-Tab>` cycle), **trouble** (diagnostics list, `:Trouble`), **persistence** (sessions, `<leader>qs`/`<leader>ql`), **todo-comments**, **colorizer**.
+- **bufferline** (buffer tabs, normal-mode `<Tab>`/`<S-Tab>` cycle), **persistence** (sessions, `<leader>qs`/`<leader>ql`), **todo-comments**, **colorizer** (catgoose fork).
 
 ## LSP / Mason
 
@@ -114,7 +115,7 @@ sv                 → vertical split
 <C-m-k>/<C-m-j>    → move line up/down
 <Esc><leader>      → exit terminal mode
 ```
-Plugin keys: `<M-t>` neo-tree, `<S-M-G/B/T>` neo-tree floats · telescope `;f` files `;r` grep `\\` buffers `;t` help `;;` resume `;e` diagnostics · lspsaga `K gf gp gr gd <leader>o` · `<leader>f` format · `<leader>p` markdown render (markdown buffers) · `<m-->` toggleterm.
+Plugin keys: `<M-t>` neo-tree, `<S-M-G/B/T>` neo-tree floats · telescope `;f` files `;r` grep `\\` buffers `;t` help `;;` resume `;e` diagnostics (preview shows line numbers) · lspsaga `K gf gp gr gd <leader>o` · `<leader>f` format · `<leader>p` markdown render (markdown buffers) · `<m-->` toggleterm.
 
 ## Maintenance
 
