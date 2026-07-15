@@ -98,12 +98,14 @@ return {
       float = {
         source = "if_many",
       },
+      -- Classic plane-0 FA glyphs — present in every patched nerd font
+      -- (circle-xmark, triangle-exclamation, lightbulb, circle-info)
       signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = "",
-          [vim.diagnostic.severity.WARN] = "",
-          [vim.diagnostic.severity.HINT] = "󰌶",
-          [vim.diagnostic.severity.INFO] = "",
+          [vim.diagnostic.severity.ERROR] = "\u{f057}",
+          [vim.diagnostic.severity.WARN] = "\u{f071}",
+          [vim.diagnostic.severity.HINT] = "\u{f0eb}",
+          [vim.diagnostic.severity.INFO] = "\u{f05a}",
         },
       },
     })

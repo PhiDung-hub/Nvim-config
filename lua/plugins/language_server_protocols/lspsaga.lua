@@ -29,7 +29,7 @@ return {
       winblend = 0,
       expand = "",
       collapse = "",
-      code_action = "󰌶",
+      code_action = "\u{f0eb}",
       incoming = " ",
       outgoing = " ",
       hover = " ",
