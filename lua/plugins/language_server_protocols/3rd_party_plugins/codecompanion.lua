@@ -25,5 +25,9 @@ return {
       chat = { adapter = "openrouter" },
       inline = { adapter = "openrouter" },
     },
+    display = {
+      -- Editable model/params block at the top of every chat buffer
+      chat = { show_settings = true },
+    },
   },
 }
